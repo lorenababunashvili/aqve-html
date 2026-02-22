@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="light" lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>დაჯავშნა - წარმატებულია</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009485",
+                        "primary-bright": "#00C2AF",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2321",
+                        "success": "#22C55E",
+                        "surface": "#ffffff",
+                        "surface-dark": "#18181b"
+                    },
+                    fontFamily: {
+                        "display": ["BPG Phone Sans", "sans-serif"],
+                        "sans": ["BPG Phone Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'BPG Phone Sans', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 35, 33, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+
+    <!-- Background Decoration -->
+    <div
+        class="fixed top-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-primary/20 rounded-full blur-3xl pointer-events-none">
+    </div>
+    <div
+        class="fixed bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-primary-bright/10 rounded-full blur-3xl pointer-events-none">
+    </div>
+
+    <div class="glass-panel rounded-3xl p-8 max-w-md w-full text-center z-10">
+        <div class="mb-4 flex justify-center">
+            <div class="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-[48px] text-success">check_circle</span>
+            </div>
+        </div>
+        <h1 class="text-2xl font-bold mb-2">ადგილი დაჯავშნილია!</h1>
+        <p class="text-gray-500 dark:text-gray-400 mb-6">თქვენ წარმატებით დაჯავშნეთ საპარკინგე ადგილი.</p>
+        <a href="home.html"
+            class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-2xl transition-all shadow-lg shadow-primary/30 w-full active:scale-[0.98]">
+            მთავარზე დაბრუნება
+        </a>
+    </div>
+</body>
+
+</html>

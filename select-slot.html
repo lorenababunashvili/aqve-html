@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="light" lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Select Parking Slot</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6", /* Changed to Blue to match photo more closely, or keep Teal? User said "exactly similar design", photo selects are blue/purple. Let's stick to brand Teal for buttons but maybe adjust map colors? User said "brand style" initially, but now "exactly similar". I will keep Brand Teal (#009485) for the main buttons to keep "our background/brand", but use the Photo's layout. */
+                        "brand": "#009485",
+                        "selection": "#6366f1", /* Indigo/Purple for the selected slot match */
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2321",
+                        "surface": "#ffffff",
+                        "surface-dark": "#18181b"
+                    },
+                    fontFamily: {
+                        "display": ["BPG Phone Sans", "sans-serif"],
+                        "sans": ["BPG Phone Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "3xl": "1.5rem",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom rotation for specific cars to match photo */
+        .car-h {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-[#101818] dark:text-white flex flex-col min-h-screen overflow-hidden">
+
+    <!-- Header -->
+    <header class="px-6 pt-12 pb-4 flex items-center justify-between z-20">
+        <button onclick="history.back()"
+            class="w-10 h-10 rounded-full bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-zinc-800 flex items-center justify-center text-gray-700 dark:text-gray-200">
+            <span class="material-symbols-rounded">arrow_back</span>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800 dark:text-white">Select Parking Slot</h1>
+        <button
+            class="w-10 h-10 rounded-full bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-zinc-800 flex items-center justify-center text-gray-700 dark:text-gray-200">
+            <span class="material-symbols-rounded">info</span>
+        </button>
+    </header>
+
+    <!-- Floor Tabs -->
+    <div class="px-6 mb-8 flex gap-4">
+        <button
+            class="flex-1 py-3 rounded-full text-sm font-bold bg-[#3b82f6] text-white shadow-lg shadow-blue-500/30 transition-transform active:scale-[0.98]">
+            1st Floor
+        </button>
+        <button
+            class="flex-1 py-3 rounded-full text-sm font-medium bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 shadow-sm border border-gray-100 dark:border-zinc-800">
+            2nd Floor
+        </button>
+        <button
+            class="flex-1 py-3 rounded-full text-sm font-medium bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 shadow-sm border border-gray-100 dark:border-zinc-800">
+            3rd Floor
+        </button>
+    </div>
+
+    <!-- Main Map Area -->
+    <main class="flex-1 px-6 relative w-full max-w-[400px] mx-auto">
+
+        <!-- Entry Point (Top Left) -->
+        <div class="absolute top-0 left-2 flex flex-col items-center z-10">
+            <span class="text-xs font-bold text-gray-800 dark:text-gray-200 mb-1">Entry</span>
+            <!-- Entry Car (Vertical Blue) -->
+            <div class="w-8 h-14 drop-shadow-lg filter">
+                <svg viewBox="0 0 60 110" class="w-full h-full">
+                    <!-- Drop Shadow -->
+                    <ellipse cx="30" cy="55" rx="26" ry="50" fill="black" opacity="0.2" filter="blur(4px)" />
+                    <!-- Wheels -->
+                    <rect x="4" y="18" width="6" height="14" rx="2" fill="#1f2937" />
+                    <rect x="50" y="18" width="6" height="14" rx="2" fill="#1f2937" />
+                    <rect x="4" y="78" width="6" height="14" rx="2" fill="#1f2937" />
+                    <rect x="50" y="78" width="6" height="14" rx="2" fill="#1f2937" />
+                    <!-- Body Base -->
+                    <path d="M 8,20 C 8,0 52,0 52,20 L 52,90 C 52,105 8,105 8,90 Z" fill="#2563eb" />
+                    <!-- Windshield/Cabin (Dark Glass) -->
+                    <path d="M 10,32 C 10,28 50,28 50,32 L 50,78 C 50,82 10,82 10,78 Z" fill="#111827" />
+                    <!-- Roof Panel -->
+                    <rect x="12" y="38" width="36" height="34" rx="4" fill="#3b82f6" opacity="0.9" />
+                    <!-- Windshield Reflection -->
+                    <path d="M 12,30 Q 30,34 48,30 L 48,36 Q 30,40 12,36 Z" fill="url(#glass-gradient-v)"
+                        opacity="0.4" />
+                    <!-- Rear Window Reflection -->
+                    <path d="M 12,74 Q 30,78 48,74 L 48,80 Q 30,84 12,80 Z" fill="white" opacity="0.1" />
+                    <!-- Headlights -->
+                    <path d="M 14,12 C 14,8 18,8 18,12 L 18,6" stroke="white" stroke-width="2" opacity="0.6"
+                        stroke-linecap="round" />
+                    <path d="M 42,12 C 42,8 46,8 46,12 L 42,6" stroke="white" stroke-width="2" opacity="0.6"
+                        stroke-linecap="round" />
+                    <!-- Defs for Gradient -->
+                    <defs>
+                        <linearGradient id="glass-gradient-v" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Path Lines Logic (SVG Overlay) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" style="overflow: visible;">
+            <!-- Main Vertical Line Down -->
+            <path d="M 22,70 L 22,650" fill="none" stroke="#d1d5db" stroke-width="2" stroke-dasharray="8 8"
+                class="dark:stroke-zinc-700" />
+
+            <!-- Turn at bottom -->
+            <path d="M 22,650 L 22,670 Q 22,690 42,690 L 140,690" fill="none" stroke="#d1d5db" stroke-width="2"
+                stroke-dasharray="8 8" class="dark:stroke-zinc-700" />
+
+            <!-- Arrow at bottom -->
+            <path d="M 135,685 L 142,690 L 135,695" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="dark:stroke-zinc-700" />
+
+            <!-- Branch to Selected Slot (The Blue Line) -->
+            <path d="M 22,70 L 22,540 Q 22,560 42,560 L 95,560" fill="none" stroke="#818cf8" stroke-width="2" />
+
+            <!-- Dotted Horizontal lines dividing sections -->
+            <line x1="80" y1="60" x2="380" y2="60" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4 4"
+                class="dark:stroke-zinc-800" />
+            <line x1="80" y1="280" x2="380" y2="280" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4 4"
+                class="dark:stroke-zinc-800" />
+            <line x1="80" y1="420" x2="380" y2="420" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4 4"
+                class="dark:stroke-zinc-800" />
+            <line x1="80" y1="640" x2="380" y2="640" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4 4"
+                class="dark:stroke-zinc-800" />
+
+            <!-- Vertical Divider between columns -->
+            <line x1="230" y1="60" x2="230" y2="640" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="4 4"
+                class="dark:stroke-zinc-800" />
+        </svg>
+
+
+        <!-- Parking Slots Container (Offset to right) -->
+        <div class="ml-24 mt-4 flex flex-col gap-16">
+
+            <!-- === Section A === -->
+            <div class="relative">
+                <!-- A Label -->
+                <div
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-zinc-800 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-700 flex items-center justify-center z-10 text-sm font-bold text-gray-600">
+                    A
+                </div>
+
+                <div class="grid grid-cols-2 gap-x-12 gap-y-6">
+                    <!-- A1 (Black Glass Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <!-- Wheels -->
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#374151" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" fill-opacity="0.9" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#6b7280" />
+                            <!-- Rear Window Highlight -->
+                            <path d="M 74,12 L 74,48" stroke="white" stroke-width="2" opacity="0.1" />
+                            <!-- Front Window Gradient -->
+                            <defs>
+                                <linearGradient id="glass-gradient-h" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:white;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="url(#glass-gradient-h)" opacity="0.3" />
+                        </svg>
+                    </div>
+                    <!-- A2 (Purple Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <!-- Wheels -->
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#7c3aed" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#c026d3" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+
+                    <!-- A3 (Booking Text) -->
+                    <div class="relative w-28 h-16 flex flex-col items-center justify-center">
+                        <span class="text-xs font-bold text-gray-500 mb-0.5">A3</span>
+                        <span class="text-[10px] text-gray-400">Booking</span>
+                    </div>
+                    <!-- A4 (Red Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#dc2626" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#ef4444" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+
+                    <!-- A5 (Blue Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#0284c7" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#38bdf8" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+                    <!-- A6 (Available Text) -->
+                    <div class="relative w-28 h-16 flex flex-col items-center justify-center">
+                        <span class="text-xs font-bold text-gray-500 mb-0.5">A6</span>
+                        <span class="text-[10px] text-gray-400">Available</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- === Section B === -->
+            <div class="relative">
+                <!-- B Label -->
+                <div
+                    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-zinc-800 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-700 flex items-center justify-center z-10 text-sm font-bold text-gray-600">
+                    B
+                </div>
+
+                <div class="grid grid-cols-2 gap-x-12 gap-y-6">
+                    <!-- B1 (Yellow Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#eab308" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#fef08a" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+                    <!-- B2 (Booking Text) -->
+                    <div class="relative w-28 h-16 flex flex-col items-center justify-center">
+                        <span class="text-xs font-bold text-gray-500 mb-0.5">B2</span>
+                        <span class="text-[10px] text-gray-400">Booking</span>
+                    </div>
+
+                    <!-- B3 (SELECTED SLOT) -->
+                    <div
+                        class="relative w-30 -ml-2 h-16 rounded-xl bg-[#e0e7ff] dark:bg-[#312e81] border-2 border-[#6366f1] flex items-center justify-center gap-2 shadow-sm">
+                        <div class="w-5 h-5 rounded-full bg-[#6366f1] flex items-center justify-center">
+                            <span class="material-symbols-rounded text-white text-[14px] font-bold">check</span>
+                        </div>
+                        <span class="text-xs font-bold text-[#4338ca] dark:text-[#a5b4fc]">Selected</span>
+                    </div>
+                    <!-- B4 (Blue Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#2563eb" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#60a5fa" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+
+                    <!-- B5 (Orange Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#ea580c" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#fdba74" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+                    <!-- B6 (Black Car) -->
+                    <div class="relative w-28 h-16 flex items-center justify-center">
+                        <svg viewBox="0 0 110 60" class="w-full drop-shadow-md rotate-180">
+                            <rect x="18" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="18" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="4" width="14" height="6" rx="2" fill="#1f2937" />
+                            <rect x="78" y="50" width="14" height="6" rx="2" fill="#1f2937" />
+                            <!-- Body -->
+                            <path d="M 20,8 C 0,8 0,52 20,52 L 90,52 C 105,52 105,8 90,8 Z" fill="#1f2937" />
+                            <!-- Cabin -->
+                            <path d="M 32,10 L 78,10 L 78,50 L 32,50 Z" fill="#111827" />
+                            <!-- Roof -->
+                            <rect x="38" y="12" width="34" height="36" rx="4" fill="#6b7280" />
+                            <!-- Reflections -->
+                            <path d="M 30,12 L 36,12 L 36,48 L 30,48 Z" fill="white" opacity="0.2" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Road Arrow Bottom -->
+            <div class="absolute bottom-[-40px] left-[-70px]">
+                <!-- (Handled by SVG) -->
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Bottom Bar -->
+    <div class="fixed bottom-0 left-0 w-full p-6 bg-transparent pointer-events-none z-50">
+        <button onclick="window.location.href='reservation.html'"
+            class="w-full bg-[#3b82f6] hover:bg-blue-600 text-white font-bold py-4 rounded-3xl shadow-xl shadow-blue-500/40 transition-all active:scale-[0.98] pointer-events-auto">
+            Continue
+        </button>
+    </div>
+
+</body>
+
+</html>

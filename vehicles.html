@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="light" lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>აქვე - ჩემი ავტომობილები</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009485",
+                        "primary-bright": "#00C2AF",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2321",
+                        "success": "#22C55E",
+                        "surface": "#ffffff",
+                        "surface-dark": "#18181b"
+                    },
+                    fontFamily: {
+                        "display": ["BPG Phone Sans", "sans-serif"],
+                        "sans": ["BPG Phone Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'BPG Phone Sans', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header
+        class="px-6 pt-12 pb-6 flex items-center justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-20">
+        <div class="flex items-center gap-4">
+            <a href="home.html"
+                class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
+                <span class="material-symbols-rounded">arrow_back</span>
+            </a>
+            <h1 class="text-xl font-bold">ჩემი ავტომობილები</h1>
+        </div>
+        <button
+            class="w-10 h-10 rounded-full bg-white dark:bg-surface-dark shadow-sm flex items-center justify-center border border-gray-100 dark:border-gray-800">
+            <span class="material-symbols-rounded text-gray-600 dark:text-gray-300">notifications</span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 flex flex-col gap-4 pb-24">
+
+        <!-- Add New Vehicle Button -->
+        <a href="add-vehicle.html"
+            class="w-full bg-white dark:bg-surface-dark p-4 rounded-2xl border-2 border-dashed border-primary/30 flex items-center justify-center gap-2 group hover:bg-primary/5 transition-all">
+            <div
+                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <span class="material-symbols-rounded">add</span>
+            </div>
+            <span class="font-bold text-primary">ავტომობილის დამატება</span>
+        </a>
+
+        <!-- Vehicle List -->
+        <div class="flex flex-col gap-4">
+            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2">აქტიური</h2>
+
+            <!-- Vehicle Card 1 -->
+            <div
+                class="bg-white dark:bg-surface-dark p-5 rounded-[1.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                            <span
+                                class="material-symbols-rounded text-gray-600 dark:text-gray-300">directions_car</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Toyota Prius</h3>
+                            <p class="text-gray-500 text-sm">სედან</p>
+                        </div>
+                    </div>
+                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+                        მთავარი
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 font-medium">სახელმწიფო ნომერი</span>
+                        <span class="font-mono text-xl font-bold tracking-wider">BB-777-BB</span>
+                    </div>
+                    <button
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-400">
+                        <span class="material-symbols-rounded">more_horiz</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vehicle Card 2 -->
+            <div
+                class="bg-white dark:bg-surface-dark p-5 rounded-[1.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                            <span
+                                class="material-symbols-rounded text-gray-600 dark:text-gray-300">directions_car</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">BMW X5</h3>
+                            <p class="text-gray-500 text-sm">ჯიპი</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 font-medium">სახელმწიფო ნომერი</span>
+                        <span class="font-mono text-xl font-bold tracking-wider">GG-123-WP</span>
+                    </div>
+                    <button
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-400">
+                        <span class="material-symbols-rounded">more_horiz</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <!-- Floating Bottom Navigation -->
+    <div
+        class="fixed bottom-6 left-4 right-4 bg-white/60 dark:bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-4 px-6 flex justify-between items-center z-50 pointer-events-auto ring-1 ring-white/50 dark:ring-white/5">
+
+        <!-- Wallet -->
+        <a href="wallet.html"
+            class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+            <span
+                class="material-symbols-rounded text-[28px] group-hover:scale-110 transition-transform">account_balance_wallet</span>
+        </a>
+
+        <!-- Vehicles (Active) -->
+        <a href="vehicles.html" class="flex flex-col items-center gap-1 text-primary relative p-2">
+            <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-lg scale-75"></div>
+            <span class="material-symbols-rounded text-[32px] drop-shadow-sm relative z-10">directions_car</span>
+            <div class="h-1 w-1 bg-primary rounded-full mt-0.5 relative z-10"></div>
+        </a>
+
+        <!-- Home -->
+        <a href="home.html"
+            class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+            <span class="material-symbols-rounded text-[28px] group-hover:scale-110 transition-transform">home</span>
+        </a>
+
+        <!-- History -->
+        <a href="history.html"
+            class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+            <span class="material-symbols-rounded text-[28px] group-hover:scale-110 transition-transform">history</span>
+        </a>
+
+        <!-- Profile -->
+        <a href="profile.html"
+            class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+            <span class="material-symbols-rounded text-[28px] group-hover:scale-110 transition-transform">person</span>
+        </a>
+    </div>
+</body>
+
+</html>

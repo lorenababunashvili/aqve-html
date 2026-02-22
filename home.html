@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="light" lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>აქვე Map View</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009485",
+                        "primary-bright": "#00C2AF",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2321",
+                        "success": "#22C55E"
+                    },
+                    fontFamily: {
+                        "display": ["BPG Phone Sans", "sans-serif"],
+                        "sans": ["BPG Phone Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .marker-glow {
+            box-shadow: 0 0 15px rgba(0, 194, 175, 0.6);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .pin-shape {
+            clip-path: polygon(50% 100%, 0% 40%, 0% 20%, 20% 0%, 80% 0%, 100% 20%, 100% 40%);
+        }.tear-drop {
+            position: relative;
+            width: 44px;
+            height: 48px;
+            background: #009485;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .tear-drop > span {
+            transform: rotate(45deg);
+        }
+    .tear-drop-verified {
+            background: #00C2AF;
+            box-shadow: 0 0 12px rgba(0, 194, 175, 0.5);
+        }
+        
+        /* Car Splash Animation */
+        @keyframes drive {
+            to {
+                offset-distance: 100%;
+            }
+        }
+
+        @keyframes drawRoad {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeOutSplash {
+            0% { opacity: 1; visibility: visible; }
+            85% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+        
+        @keyframes textReveal {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .splash-container {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: #f5f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOutSplash 7.5s forwards;
+            pointer-events: none;
+        }
+
+        .dark .splash-container {
+            background-color: #0f2321;
+        }
+
+        .road-path {
+            fill: none;
+            stroke: #e5e7eb;
+            stroke-width: 120; /* Wider road */
+            stroke-linecap: round;
+        }
+
+        .dark .road-path {
+            stroke: #27272a;
+        }
+        
+        /* Realistic Road Texture Overlay */
+        .road-texture {
+            opacity: 0.1;
+            mix-blend-mode: multiply;
+        }
+
+        .road-trail {
+            fill: none;
+            stroke: #009485;
+            stroke-width: 120;
+            stroke-linecap: round;
+            stroke-dasharray: 1400;
+            stroke-dashoffset: 1400;
+            animation: drawRoad 6s cubic-bezier(0.45, 0, 0.1, 1) forwards;
+            filter: url(#glow);
+        }
+
+        .car-group {
+            offset-path: path('M-150,250 C150,250 50,50 350,50 C650,50 550,300 800,300');
+            offset-distance: 0%;
+            offset-rotate: auto;
+            animation: drive 6s cubic-bezier(0.45, 0, 0.1, 1) forwards;
+            transform-box: fill-box;
+            transform-origin: center;
+            /* Scale up the car for verified "bigger" look */
+            transform: scale(1.5); 
+        }
+        
+        .logo-text {
+            font-family: 'BPG Phone Sans', sans-serif;
+            font-weight: 800;
+            fill: #009485;
+            font-size: 64px;
+            opacity: 0;
+            animation: textReveal 0.8s ease-out 5s forwards;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+        
+        .dark .logo-text {
+            fill: #00C2AF;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-[#101818] dark:text-white">
+
+    <!-- Realistic Splash Screen -->
+    <div id="splash-screen" class="splash-container">
+        <svg width="1000" height="500" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"
+            class="w-full max-w-6xl px-4">
+
+            <defs>
+                <!-- Asphalt Texture Filter -->
+                <filter id="asphalt" x="0%" y="0%" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" />
+                    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.5 0" in="noise"
+                        result="coloredNoise" />
+                </filter>
+
+                <!-- Car Paint Gradient (Yellow) -->
+                <linearGradient id="paint-yellow" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FFD700" /> <!-- Gold -->
+                    <stop offset="20%" stop-color="#FFF700" /> <!-- Highlight -->
+                    <stop offset="50%" stop-color="#FFcc00" /> <!-- Base -->
+                    <stop offset="85%" stop-color="#DAA520" /> <!-- Shadow -->
+                    <stop offset="100%" stop-color="#B8860B" /> <!-- Dark Shadow -->
+                </linearGradient>
+
+                <!-- Glass Gradient -->
+                <linearGradient id="glass-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#111" />
+                    <stop offset="50%" stop-color="#222" />
+                    <stop offset="100%" stop-color="#000" />
+                </linearGradient>
+
+                <!-- Glow Effect -->
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+            </defs>
+
+            <!-- Realistic Parking Spot -->
+            <g transform="translate(700, 180)">
+                <!-- Asphalt Base with texture -->
+                <rect x="-20" y="-20" width="260" height="180" fill="#333" rx="4" />
+                <rect x="-20" y="-20" width="260" height="180" fill="#333" filter="url(#asphalt)" opacity="0.4" />
+
+                <!-- Painted Lines (Faded white) -->
+                <path d="M10,10 L10,130 L210,130 L210,10" fill="none" stroke="#e5e7eb" stroke-width="8"
+                    stroke-linecap="square" opacity="0.9" />
+
+                <!-- Parking Symbol "P" (Painted on ground perspective) -->
+                <text x="110" y="90" text-anchor="middle" fill="#f3f4f6" font-family="Arial Black, sans-serif"
+                    font-weight="900" font-size="60" opacity="0.6" transform="scale(1, 0.9)">P</text>
+            </g>
+
+            <!-- Road Path (Base) -->
+            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-path" />
+            <!-- Road Texture Overlay -->
+            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-path road-texture"
+                filter="url(#asphalt)" />
+
+            <!-- Trail -->
+            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-trail" />
+
+            <!-- Car Object (User Image) -->
+            <g class="car-group">
+                <!-- Drop Shadow -->
+                <path d="M70,-15 L82,-10 L70,-5" fill="none" stroke="#fff" stroke-width="2" class="bloom" />
+                <path d="M70,15 L82,10 L70,5" fill="none" stroke="#fff" stroke-width="2" class="bloom" />
+
+                <!-- Logo Badge -->
+                <circle cx="78" cy="0" r="2" fill="black" />
+                <circle cx="78" cy="0" r="1" fill="#FFD700" />
+            </g>
+
+            <!-- Brand Text -->
+            <text x="500" y="450" text-anchor="middle" class="logo-text">AQUE</text>
+        </svg>
+    </div>
+    <div class="relative flex h-screen w-full flex-col overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="h-full w-full bg-cover bg-center"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhUpmqkWwK4oj2zkFSL9OnTDov1_PBmdIfG_4qyXusxZloJhLbwIdR_8_zMDQ10Uc_9VznLg5TZUHod2IrWivVCr8aHkF7a3jw7_Vpwy0no8AKR7Yug37EtkNe9lU6pzULnlIMxndvr8DHeTROdN2vpQUCZaHk6tkGwD64ZCJGn1wAEz2m9g1RLHRfLrSA6Bq5X1-7OFoKw7qdvuDw4inFvJSdz5PRQpWwEmkexxWVdMWG_7gikihntgEuV9YX41PCNNuil9Kv5ME");'>
+                <a href="lot-details.html" class="absolute top-[35%] left-[20%]">
+                    <div class="tear-drop">
+                        <span class="text-[12px] font-bold text-white">1.5₾</span>
+                    </div>
+                </a>
+                <a href="lot-details.html" class="absolute top-[25%] right-[30%]">
+                    <div class="tear-drop">
+                        <span class="text-[12px] font-bold text-white">2₾</span>
+                    </div>
+                </a>
+                <div class="absolute top-[52%] left-[52%] transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="relative flex items-center justify-center">
+                        <div class="absolute h-16 w-16 rounded-full bg-primary-bright/20 animate-pulse"></div>
+                        <div class="tear-drop tear-drop-verified ring-2 ring-white">
+                            <span class="material-symbols-outlined text-[20px] text-white">check</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="lot-details.html" class="absolute bottom-[42%] left-[15%]">
+                    <div class="tear-drop">
+                        <span class="text-[12px] font-bold text-white">3₾</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="relative z-10 flex h-full flex-col pointer-events-none">
+            <div
+                class="px-4 pt-14 pb-6 flex flex-col gap-3 pointer-events-auto bg-white dark:bg-zinc-900 shadow-lg rounded-b-[2.5rem] mb-4">
+                <!-- Transportation Types -->
+                <div class="flex flex-col gap-2 mb-2">
+                    <div class="flex justify-between items-center px-1">
+                        <h2 class="text-base font-bold text-gray-800 dark:text-white">ტრანსპორტის ტიპი</h2>
+                        <a href="#"
+                            class="text-primary text-sm font-semibold flex items-center gap-1 hover:text-primary-bright transition-colors">
+                            მეტის ნახვა
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+                        </a>
+                    </div>
+
+                    <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-1 px-1 -mx-1">
+                        <!-- Car (Active) -->
+                        <button class="flex-shrink-0 relative group">
+                            <div
+                                class="w-24 h-24 bg-primary rounded-2xl p-2 flex flex-col justify-between items-start shadow-lg shadow-primary/30 transition-transform active:scale-95 ring-2 ring-primary ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark">
+                                <img src="https://img.icons8.com/fluency/94/car.png"
+                                    class="w-14 h-14 object-contain self-center drop-shadow-md" alt="Car">
+                                <span class="text-white font-bold text-sm ml-1">მანქანა</span>
+
+                                <div class="absolute bottom-2 right-2 bg-white rounded-full p-0.5">
+                                    <div class="bg-primary rounded-full p-0.5">
+                                        <span class="material-symbols-outlined text-[14px] text-white">north_east</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Bike -->
+                        <button class="flex-shrink-0 relative group">
+                            <div
+                                class="w-24 h-24 bg-white dark:bg-zinc-900 rounded-2xl p-2 flex flex-col justify-between items-start shadow-sm border border-gray-100 dark:border-zinc-800 transition-transform active:scale-95 group-hover:border-primary/30">
+                                <img src="https://img.icons8.com/fluency/94/motorcycle.png"
+                                    class="w-14 h-14 object-contain self-center drop-shadow-sm grayscale-[0.3] group-hover:grayscale-0 transition-all"
+                                    alt="Bike">
+                                <span class="text-gray-600 dark:text-gray-300 font-bold text-sm ml-1">მოტო</span>
+
+                                <div
+                                    class="absolute bottom-2 right-2 bg-gray-100 dark:bg-zinc-800 rounded-full p-1 group-hover:bg-primary/10 transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-[14px] text-gray-400 group-hover:text-primary transition-colors">north_east</span>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Truck -->
+                        <button class="flex-shrink-0 relative group">
+                            <div
+                                class="w-24 h-24 bg-white dark:bg-zinc-900 rounded-2xl p-2 flex flex-col justify-between items-start shadow-sm border border-gray-100 dark:border-zinc-800 transition-transform active:scale-95 group-hover:border-primary/30">
+                                <img src="https://img.icons8.com/fluency/94/truck.png"
+                                    class="w-14 h-14 object-contain self-center drop-shadow-sm grayscale-[0.3] group-hover:grayscale-0 transition-all"
+                                    alt="Truck">
+                                <span class="text-gray-600 dark:text-gray-300 font-bold text-sm ml-1">სატვირთო</span>
+
+                                <div
+                                    class="absolute bottom-2 right-2 bg-gray-100 dark:bg-zinc-800 rounded-full p-1 group-hover:bg-primary/10 transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-[14px] text-gray-400 group-hover:text-primary transition-colors">north_east</span>
+                                </div>
+                            </div>
+                        </button>
+
+                        <!-- Bus -->
+                        <button class="flex-shrink-0 relative group">
+                            <div
+                                class="w-24 h-24 bg-white dark:bg-zinc-900 rounded-2xl p-2 flex flex-col justify-between items-start shadow-sm border border-gray-100 dark:border-zinc-800 transition-transform active:scale-95 group-hover:border-primary/30">
+                                <img src="https://img.icons8.com/fluency/94/bus.png"
+                                    class="w-14 h-14 object-contain self-center drop-shadow-sm grayscale-[0.3] group-hover:grayscale-0 transition-all"
+                                    alt="Bus">
+                                <span class="text-gray-600 dark:text-gray-300 font-bold text-sm ml-1">ავტობუსი</span>
+
+                                <div
+                                    class="absolute bottom-2 right-2 bg-gray-100 dark:bg-zinc-800 rounded-full p-1 group-hover:bg-primary/10 transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-[14px] text-gray-400 group-hover:text-primary transition-colors">north_east</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 flex flex-col gap-3 pointer-events-auto">
+                <div
+                    class="w-full flex items-center bg-white dark:bg-zinc-900 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] h-14 px-4 gap-3 border border-gray-100/50 dark:border-zinc-800">
+                    <span class="material-symbols-outlined text-gray-400">search</span>
+                    <input
+                        class="flex-1 bg-transparent border-none focus:ring-0 text-[17px] font-normal placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                        placeholder="სად მიდიხართ?" type="text" />
+                    <div class="h-6 w-px bg-gray-100 dark:bg-zinc-700"></div>
+                    <button class="text-primary">
+                        <span class="material-symbols-outlined">mic</span>
+                    </button>
+                </div>
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+                    <button
+                        class="flex shrink-0 items-center gap-1 rounded-full bg-white dark:bg-zinc-900 px-5 py-2.5 shadow-sm border border-gray-100/50 dark:border-zinc-800">
+                        <span class="text-[14px] font-medium text-gray-700 dark:text-gray-200">უფასო</span>
+                    </button>
+                    <button
+                        class="flex shrink-0 items-center gap-1.5 rounded-full bg-primary text-white px-5 py-2.5 shadow-md shadow-primary/20">
+                        <span class="material-symbols-outlined text-[18px] font-variation-fill">verified</span>
+                        <span class="text-[14px] font-medium">სენსორით</span>
+                    </button>
+                    <button
+                        class="flex shrink-0 items-center gap-1.5 rounded-full bg-white dark:bg-zinc-900 px-5 py-2.5 shadow-sm border border-gray-100/50 dark:border-zinc-800">
+                        <span class="material-symbols-outlined text-[18px] text-gray-500">ev_station</span>
+                        <span class="text-[14px] font-medium text-gray-700 dark:text-gray-200">ელ. დამტენი</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1"></div>
+            <div class="flex flex-col items-end px-4 mb-4 gap-3 pointer-events-auto">
+                <button
+                    class="p-3 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-gray-100 dark:border-zinc-800 text-primary">
+                    <span class="material-symbols-outlined">my_location</span>
+                </button>
+            </div>
+        </div>
+        <!-- Parking Details Card -->
+        <div class="fixed bottom-28 left-4 right-4 z-40">
+            <div
+                class="bg-white dark:bg-zinc-900 rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-zinc-800">
+                <!-- Image Header -->
+                <div class="h-32 bg-cover bg-center relative"
+                    style="background-image: url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&q=80&w=800');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-3 left-4">
+                        <span
+                            class="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px] text-green-400">check_circle</span>
+                            გარანტირებული ადგილი
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-5 pt-4">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white font-display">ჭავჭავაძის გამზ. #34
+                        </h2>
+                        <div class="bg-gray-50 dark:bg-zinc-800/50 px-3 py-1.5 rounded-lg flex items-center gap-1">
+                            <span class="text-lg font-bold text-primary">3₾</span>
+                            <span class="text-xs text-gray-400 font-medium">/სთ</span>
+                        </div>
+                    </div>
+
+                    <!-- Info Grid -->
+                    <div class="grid grid-cols-3 gap-2 mb-5">
+                        <div class="flex flex-col items-center p-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50">
+                            <span class="material-symbols-outlined text-primary mb-1">local_parking</span>
+                            <span class="text-sm font-bold text-gray-900 dark:text-white">12</span>
+                            <span class="text-[10px] text-gray-500">ადგილი</span>
+                        </div>
+                        <div class="flex flex-col items-center p-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50">
+                            <span class="material-symbols-outlined text-primary mb-1">directions_car</span>
+                            <span class="text-sm font-bold text-gray-900 dark:text-white">8</span>
+                            <span class="text-[10px] text-gray-500">წუთი</span>
+                        </div>
+                        <div class="flex flex-col items-center p-2 rounded-xl bg-gray-50 dark:bg-zinc-800/50">
+                            <span class="material-symbols-outlined text-primary mb-1">map</span>
+                            <span class="text-sm font-bold text-gray-900 dark:text-white">1.2</span>
+                            <span class="text-[10px] text-gray-500">კმ</span>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-3">
+                        <a href="navigation.html"
+                            class="flex-1 py-3.5 rounded-xl border-2 border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">navigation</span>
+                            ნავიგაცია
+                        </a>
+                        <a href="lot-details.html"
+                            class="flex-1 py-3.5 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/25 hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">calendar_clock</span>
+                            დაჯავშნა
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Bottom Navigation -->
+        <div
+            class="fixed bottom-6 left-4 right-4 bg-white/60 dark:bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-4 px-6 flex justify-between items-center z-50 pointer-events-auto ring-1 ring-white/50 dark:ring-white/5">
+
+            <!-- Wallet -->
+            <a href="wallet.html"
+                class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+                <span
+                    class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">account_balance_wallet</span>
+            </a>
+
+            <!-- Vehicles -->
+            <a href="vehicles.html"
+                class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+                <span
+                    class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">directions_car</span>
+            </a>
+
+            <!-- Home (Active) -->
+            <a href="home.html" class="flex flex-col items-center gap-1 text-primary relative p-2">
+                <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-lg scale-75"></div>
+                <span class="material-symbols-outlined text-[32px] drop-shadow-sm relative z-10">home</span>
+                <div class="h-1 w-1 bg-primary rounded-full mt-0.5 relative z-10"></div>
+            </a>
+
+            <!-- History -->
+            <a href="history.html"
+                class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+                <span
+                    class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">history</span>
+            </a>
+
+            <!-- Profile -->
+            <a href="profile.html"
+                class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors group p-2">
+                <span
+                    class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">person</span>
+            </a>
+        </div>
+    </div>
+
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 35, 33, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #details-panel {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+            transform: translateY(100%);
+        }
+
+        #details-panel.open {
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            const detailsPanel = document.getElementById('details-panel');
+            const pins = document.querySelectorAll('.tear-drop');
+            const mapArea = document.querySelector('.absolute.inset-0.z-0'); // The map background area
+
+            // Remove splash after animation
+            setTimeout(() => {
+                if (splashScreen) splashScreen.remove();
+            }, 4000);
+
+            // Pin Click Handler
+            pins.forEach(pin => {
+                pin.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent map click from closing immediately
+                    detailsPanel.classList.add('open');
+                });
+            });
+
+            // Close panel when clicking outside (on the map)
+            mapArea.addEventListener('click', () => {
+                detailsPanel.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

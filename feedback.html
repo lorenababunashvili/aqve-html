@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="light" lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>აქვე - უკუკავშირი</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009485",
+                        "primary-bright": "#00C2AF",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f2321",
+                        "surface": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["BPG Phone Sans", "sans-serif"],
+                        "sans": ["BPG Phone Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'BPG Phone Sans', sans-serif;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Star Rating Hover Effect */
+        .star-rating button:hover~button .material-symbols-rounded {
+            color: #e5e7eb;
+            /* Gray out stars after hovered one */
+            font-variation-settings: 'FILL' 0;
+        }
+
+        .star-rating:hover button .material-symbols-rounded {
+            color: #fbbf24;
+            /* Make all stars yellow on hover container... */
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .star-rating button:hover .material-symbols-rounded {
+            color: #fbbf24;
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <div
+        class="px-6 pt-12 pb-6 flex items-center justify-between z-10 sticky top-0 bg-gray-50/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="flex items-center gap-4">
+            <button onclick="history.back()"
+                class="p-3 bg-white dark:bg-white/10 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
+                <span class="material-symbols-rounded text-gray-600 dark:text-gray-200">arrow_back</span>
+            </button>
+            <h1 class="text-xl font-bold text-gray-800 dark:text-white">უკუკავშირი</h1>
+        </div>
+        <div class="w-10"></div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="flex-1 overflow-y-auto no-scrollbar pb-32 px-6">
+
+        <div class="bg-white dark:bg-white/5 p-8 rounded-[2rem] shadow-sm mb-6 flex flex-col items-center text-center">
+            <div class="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-rounded text-[40px]">thumb_up</span>
+            </div>
+            <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-2">მოგწონთ აპლიკაცია?</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                თქვენი აზრი ჩვენთვის ძალიან მნიშვნელოვანია. გთხოვთ შეგვაფასოთ.
+            </p>
+
+            <!-- Star Rating -->
+            <div class="flex gap-2 mt-6 star-rating flex-row-reverse justify-center">
+                <!-- Using flex-row-reverse for simpler CSS hover logic if needed, but standard sequential buttons here -->
+                <!-- Actually, standard method: -->
+
+            </div>
+            <!-- Simplified Star Rating Visual -->
+            <div class="flex gap-2 mt-6">
+                <button class="p-2 text-yellow-400 hover:scale-110 transition-transform"><span
+                        class="material-symbols-rounded text-[32px] font-variation-fill">star</span></button>
+                <button class="p-2 text-yellow-400 hover:scale-110 transition-transform"><span
+                        class="material-symbols-rounded text-[32px] font-variation-fill">star</span></button>
+                <button class="p-2 text-yellow-400 hover:scale-110 transition-transform"><span
+                        class="material-symbols-rounded text-[32px] font-variation-fill">star</span></button>
+                <button class="p-2 text-yellow-400 hover:scale-110 transition-transform"><span
+                        class="material-symbols-rounded text-[32px] font-variation-fill">star</span></button>
+                <button
+                    class="p-2 text-gray-300 dark:text-white/20 hover:text-yellow-400 hover:scale-110 transition-all"><span
+                        class="material-symbols-rounded text-[32px]">star</span></button>
+            </div>
+        </div>
+
+        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4">დაგვიტოვეთ კომენტარი</h2>
+
+        <div class="bg-white dark:bg-white/5 p-6 rounded-[2rem] shadow-sm">
+            <textarea
+                class="w-full bg-gray-50 dark:bg-background-dark border-none rounded-xl p-4 text-gray-800 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-primary/20 min-h-[150px] resize-none"
+                placeholder="რას გააუმჯობესებდით?"></textarea>
+
+            <button
+                class="w-full bg-primary text-white font-bold py-4 rounded-xl mt-4 shadow-lg shadow-primary/30 hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
+                <span class="material-symbols-rounded">send</span>
+                გაგზავნა
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Font Variation Settings for Filled Icons -->
+    <style>
+        .font-variation-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+
+</body>
+
+</html>
