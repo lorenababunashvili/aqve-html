@@ -1,148 +1,139 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - დახმარება</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Help & Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f2321",
-                        "surface": "#ffffff",
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                    boxShadow: {
-                        "soft": "0 10px 40px -10px rgba(0,0,0,0.05)",
-                    }
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f8f9fb" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
     <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
+        .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
-        .no-scrollbar {
+        .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative">
 
     <!-- Header -->
-    <div
-        class="px-6 pt-12 pb-6 flex items-center justify-between z-10 sticky top-0 bg-gray-50/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div class="flex items-center gap-4">
+    <header
+        class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background/90 backdrop-blur-md">
+        <div class="flex items-center gap-3">
             <button onclick="history.back()"
-                class="p-3 bg-white dark:bg-white/10 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
-                <span class="material-symbols-rounded text-gray-600 dark:text-gray-200">arrow_back</span>
+                class="p-1 text-[#001736] hover:bg-gray-100 rounded-full transition-colors">
+                <span class="material-symbols-rounded text-2xl">arrow_back</span>
             </button>
-            <h1 class="text-xl font-bold text-gray-800 dark:text-white">დახმარება</h1>
+            <h1 class="text-[22px] font-extrabold text-[#001736] tracking-tight">Help & Support</h1>
         </div>
         <div class="w-10"></div>
-    </div>
+    </header>
 
     <!-- Scrollable Content -->
-    <div class="flex-1 overflow-y-auto no-scrollbar pb-32 px-6">
+    <main class="flex-1 overflow-y-auto hide-scrollbar pb-10 px-5 pt-2">
 
         <!-- Search FAQ -->
-        <div class="relative mb-8">
-            <input type="text" placeholder="როგორ დაგეხმაროთ?"
-                class="w-full bg-white dark:bg-white/5 border-none rounded-[1.5rem] py-4 pl-12 pr-4 shadow-sm text-gray-800 dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-primary/20">
+        <div class="relative mb-8 focus-within:ring-2 focus-within:ring-[#14d0a1]/20 rounded-[20px] transition-shadow">
+            <input type="text" placeholder="How can we help you?"
+                class="w-full bg-white border border-gray-100 rounded-[20px] py-4 pl-12 pr-4 shadow-sm text-[#001736] placeholder:text-gray-400 font-bold text-[15px] outline-none">
             <span class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
         </div>
 
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4">ხშირად დასმული კითხვები</h2>
+        <h2 class="text-[12px] font-bold text-gray-400 uppercase tracking-widest ml-1 mb-3">FAQ</h2>
 
         <div class="flex flex-col gap-3 mb-8">
             <!-- FAQ Item 1 -->
             <button
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm flex items-center justify-between group hover:scale-[1.01] transition-transform text-left">
-                <span class="font-bold text-gray-700 dark:text-gray-200">როგორ დავამატო ბარათი?</span>
-                <span
-                    class="material-symbols-rounded text-gray-400 group-hover:text-primary transition-colors">add_circle</span>
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
+                <span class="font-bold text-[#001736] text-[15px]">How to add a card?</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
+                    <span class="material-symbols-rounded text-[20px]">add</span>
+                </div>
             </button>
 
             <!-- FAQ Item 2 -->
             <button
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm flex items-center justify-between group hover:scale-[1.01] transition-transform text-left">
-                <span class="font-bold text-gray-700 dark:text-gray-200">როგორ შევცვალო პაროლი?</span>
-                <span
-                    class="material-symbols-rounded text-gray-400 group-hover:text-primary transition-colors">lock_reset</span>
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
+                <span class="font-bold text-[#001736] text-[15px]">How to change my password?</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
+                    <span class="material-symbols-rounded text-[20px]">add</span>
+                </div>
             </button>
 
             <!-- FAQ Item 3 -->
             <button
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm flex items-center justify-between group hover:scale-[1.01] transition-transform text-left">
-                <span class="font-bold text-gray-700 dark:text-gray-200">თანხის დაბრუნების პოლიტიკა</span>
-                <span
-                    class="material-symbols-rounded text-gray-400 group-hover:text-primary transition-colors">description</span>
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
+                <span class="font-bold text-[#001736] text-[15px]">Refund Policy</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
+                    <span class="material-symbols-rounded text-[20px]">add</span>
+                </div>
             </button>
         </div>
 
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4">დაგვიკავშირდით</h2>
+        <h2 class="text-[12px] font-bold text-gray-400 uppercase tracking-widest ml-1 mb-3">Contact Us</h2>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-3">
+
             <!-- Chat Support -->
             <button
-                class="bg-white dark:bg-white/5 p-5 rounded-[2rem] shadow-sm flex flex-col items-center gap-3 hover:bg-primary/5 transition-colors group">
+                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:border-[#14d0a1] transition-colors group active:scale-[0.98]">
                 <div
-                    class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-rounded text-[28px]">chat</span>
+                    class="w-14 h-14 rounded-[16px] bg-[#e4fff6] text-[#14d0a1] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-rounded text-[28px]"
+                        style="font-variation-settings: 'FILL' 1;">chat</span>
                 </div>
-                <span class="font-bold text-gray-700 dark:text-gray-200">ჩატი</span>
+                <span class="font-bold text-[#001736] text-[15px]">Chat</span>
             </button>
 
             <!-- Call Support -->
             <button
-                class="bg-white dark:bg-white/5 p-5 rounded-[2rem] shadow-sm flex flex-col items-center gap-3 hover:bg-primary/5 transition-colors group">
+                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:border-green-400 transition-colors group active:scale-[0.98]">
                 <div
-                    class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-rounded text-[28px]">call</span>
+                    class="w-14 h-14 rounded-[16px] bg-green-50 text-green-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-rounded text-[28px]"
+                        style="font-variation-settings: 'FILL' 1;">call</span>
                 </div>
-                <span class="font-bold text-gray-700 dark:text-gray-200">დარეკვა</span>
+                <span class="font-bold text-[#001736] text-[15px]">Call</span>
             </button>
 
             <!-- Email Support -->
             <button
-                class="bg-white dark:bg-white/5 p-5 rounded-[2rem] shadow-sm flex flex-col items-center gap-3 hover:bg-primary/5 transition-colors group col-span-2">
+                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-2 hover:border-orange-400 transition-colors group col-span-2 active:scale-[0.98]">
                 <div
-                    class="w-14 h-14 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-rounded text-[28px]">mail</span>
+                    class="w-14 h-14 rounded-[16px] bg-amber-50 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform mt-2">
+                    <span class="material-symbols-rounded text-[28px]"
+                        style="font-variation-settings: 'FILL' 1;">mail</span>
                 </div>
-                <span class="font-bold text-gray-700 dark:text-gray-200">ელ-ფოსტა</span>
-                <span class="text-sm text-gray-400 -mt-2">support@aque.ge</span>
+                <div class="flex flex-col items-center">
+                    <span class="font-bold text-[#001736] text-[15px]">Email</span>
+                    <span class="text-[12px] text-gray-400 font-medium">support@aque.ge</span>
+                </div>
             </button>
+
         </div>
 
-    </div>
+    </main>
 
 </body>
 

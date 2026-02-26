@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Face Recognition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#14d0a1",
+                        background: "#f8f9fb",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#f8f9fb] text-gray-900 font-sans min-h-[100dvh] flex flex-col relative overflow-hidden">
+
+    <!-- Header Area -->
+    <div class="pt-12 pb-4 px-6 flex justify-between items-center z-20 bg-transparent">
+        <div class="text-gray-900 text-[15px] font-medium tracking-wide">9:41</div>
+        <div class="flex items-center gap-1.5 opacity-90 text-gray-900">
+            <span class="material-symbols-rounded text-[16px]">signal_cellular_alt</span>
+            <span class="material-symbols-rounded text-[16px]">wifi</span>
+            <span class="material-symbols-rounded text-[18px]">battery_full</span>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <div class="px-6 flex items-center justify-between mb-8 z-20 relative">
+        <button onclick="window.history.back()"
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50 active:scale-95 transition-all text-gray-900">
+            <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" class="text-gray-900 drop-shadow-sm">
+                <path d="M20 30 h 30 a 10 10 0 0 1 10 10 v 10 a 10 10 0 0 0 10 10 h 15" stroke="currentColor"
+                    stroke-width="8" stroke-dasharray="8 6" stroke-linecap="round" fill="none" />
+                <path d="M70 50 l 15 0 c 5 0 10 5 10 10 v 15" stroke="currentColor" stroke-width="8" fill="none" />
+                <rect x="70" y="65" width="25" height="15" rx="4" stroke="currentColor" stroke-width="8" fill="none" />
+                <circle cx="75" cy="80" r="4" fill="currentColor" />
+                <circle cx="90" cy="80" r="4" fill="currentColor" />
+            </svg>
+            <span class="text-[18px] font-bold text-gray-900 tracking-wide">AQVE</span>
+        </div>
+        <div class="w-10"></div> <!-- Spacer for centering -->
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col px-6 z-20">
+
+        <!-- Titles -->
+        <div class="text-center mb-10">
+            <h1 class="text-[28px] font-bold text-gray-900 mb-3 tracking-tight">Face Recognition</h1>
+            <p class="text-gray-500 text-[15px] leading-relaxed mx-auto max-w-[280px]">
+                Just scan your face and access your account instantly
+            </p>
+        </div>
+
+        <!-- Scanning Area -->
+        <div class="flex-1 flex flex-col items-center justify-center relative w-full max-w-[320px] mx-auto mb-10">
+            <!-- Animated Scan Circle -->
+            <div class="relative w-full aspect-square flex items-center justify-center">
+                <!-- Dashed Outer Circle -->
+                <div
+                    class="absolute inset-0 rounded-full border-[3px] border-dashed border-[#14d0a1] opacity-60 animate-[spin_10s_linear_infinite]">
+                </div>
+                <!-- Scanning Line overlay -->
+                <div class="absolute top-1/2 left-0 right-0 h-[2px] bg-[#14d0a1] shadow-[0_0_15px_#14d0a1] z-20"></div>
+                <!-- Scanning Gradient Fill below line -->
+                <div
+                    class="absolute top-1/2 bottom-0 left-0 right-0 bg-gradient-to-b from-[#14d0a1]/20 to-transparent rounded-b-full z-10">
+                </div>
+
+                <!-- Abstract Face Vector inside the circle -->
+                <div class="relative z-10 w-2/3 h-2/3 flex items-center justify-center text-[#14d0a1]">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                        stroke-linejoin="round" class="w-full h-full">
+                        <!-- Left Eye Frame -->
+                        <path d="M 25 55 v -10 c 0 -5 5 -5 10 -5 h 10" />
+                        <!-- Right Eye Frame -->
+                        <path d="M 75 55 v -10 c 0 -5 -5 -5 -10 -5 h -10" />
+                        <!-- Left Eye Dot -->
+                        <circle cx="40" cy="48" r="4" fill="currentColor" stroke="none" />
+                        <!-- Right Eye Dot -->
+                        <circle cx="60" cy="48" r="4" fill="currentColor" stroke="none" />
+                        <!-- Nose Line -->
+                        <path d="M 50 48 v 12 c 0 4 -2 5 -4 5 h -2" />
+                        <!-- Smile Profile -->
+                        <path d="M 40 68 c 5 5 15 5 20 0" stroke-width="4" />
+                        <!-- Bottom Left Frame -->
+                        <path d="M 25 65 v 10 c 0 5 5 5 10 5 h 10" />
+                        <!-- Bottom Right Frame -->
+                        <path d="M 75 65 v 10 c 0 5 -5 5 -10 5 h -10" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Button -->
+        <div class="pb-10 w-full mt-auto">
+            <button onclick="window.location.href='face-success.html'"
+                class="w-full bg-[#14d0a1] text-white font-semibold py-4 rounded-[20px] shadow-[0_8px_20px_rgba(20,208,161,0.25)] active:scale-[0.98] transition-all flex items-center justify-center text-[16px] hover:bg-[#12b88e]">
+                Login Now
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

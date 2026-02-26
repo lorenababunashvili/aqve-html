@@ -1,178 +1,182 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - საფულე</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Wallet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#0f2321",
-                        "success": "#22C55E",
-                        "surface": "#ffffff",
-                        "surface-dark": "#18181b"
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f8f9fb" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
     <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
-        .gradient-card {
-            background: linear-gradient(135deg, #009485 0%, #007569 100%);
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-28">
 
     <!-- Header -->
-    <header class="px-6 pt-12 pb-6 flex items-center justify-between sticky top-0 z-20">
-        <div class="flex items-center gap-4">
-            <a href="home.html"
-                class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </a>
-            <h1 class="text-xl font-bold">ბალანსი</h1>
+    <header class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background">
+        <div class="flex items-center gap-3">
+            <button onclick="history.back()" class="p-1 text-[#001736]">
+                <span class="material-symbols-rounded text-2xl">arrow_back</span>
+            </button>
+            <h1 class="text-[22px] font-extrabold text-[#001736]">Wallet</h1>
         </div>
-        <button class="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-            <span class="material-symbols-outlined">history</span>
+        <button
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 shadow-sm border border-gray-100 hover:text-gray-800 transition-colors">
+            <span class="material-symbols-rounded text-[20px]">history</span>
         </button>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 px-4 flex flex-col gap-6 pb-24">
+    <main class="flex-1 px-5 flex flex-col gap-6 mt-2">
 
         <!-- Balance Card -->
-        <div class="gradient-card rounded-[2rem] p-6 text-white shadow-xl shadow-primary/30 relative overflow-hidden">
-            <!-- Decorative circles -->
-            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10"></div>
-            <div class="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full -ml-8 -mb-8"></div>
+        <div
+            class="w-full bg-gradient-to-r from-[#11d8a6] to-[#045948] rounded-[28px] p-6 text-white shadow-[0_12px_30px_rgba(20,208,161,0.25)] relative overflow-hidden">
+            <!-- Decorative Ellipses -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-xl -mr-10 -mt-10"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full blur-xl -ml-8 -mb-8"></div>
 
-            <div class="relative z-10 flex flex-col gap-1 mb-6">
-                <span class="text-white/80 font-medium">მიმდინარე ბალანსი</span>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-4xl font-extrabold">24.50</span>
-                    <span class="text-xl font-bold opacity-80">₾</span>
+            <div class="relative z-10 flex flex-col gap-1 mb-8">
+                <span class="text-white/80 font-bold text-[13px] uppercase tracking-wider">Current Balance</span>
+                <div class="flex items-baseline gap-1 mt-1">
+                    <span class="text-[40px] font-extrabold tracking-tight">24.50</span>
+                    <span class="text-[20px] font-bold opacity-80">₾</span>
                 </div>
             </div>
 
             <div class="relative z-10 flex gap-3">
                 <a href="top-up.html"
-                    class="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-xl py-3 px-4 flex items-center justify-center gap-2 transition-all">
-                    <span class="material-symbols-outlined text-[20px]">add</span>
-                    <span class="font-bold text-sm">შევსება</span>
+                    class="flex-1 bg-white hover:bg-gray-50 text-[#003822] rounded-xl py-3.5 px-4 flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]">
+                    <span class="material-symbols-rounded text-[20px]">add</span>
+                    <span class="font-bold text-[14px]">Top Up</span>
                 </a>
                 <a href="transfer.html"
-                    class="flex-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-xl py-3 px-4 flex items-center justify-center gap-2 transition-all">
-                    <span class="material-symbols-outlined text-[20px]">send</span>
-                    <span class="font-bold text-sm">გადარიცხვა</span>
+                    class="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white rounded-xl py-3.5 px-4 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+                    <span class="material-symbols-rounded text-[20px]">send</span>
+                    <span class="font-bold text-[14px]">Transfer</span>
                 </a>
             </div>
         </div>
 
-        <!-- Payment Methods -->
+        <!-- Saved Cards Section -->
         <div>
-            <div class="flex justify-between items-center mb-4 px-2">
-                <h2 class="text-lg font-bold">ბარათები</h2>
-                <a href="payment-methods.html" class="text-primary text-sm font-bold">რედაქტირება</a>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-[17px] font-bold text-[#001736]">Saved Cards</h2>
+                <a href="payment-methods.html" class="text-[#14d0a1] text-[13px] font-bold">Manage</a>
             </div>
 
-            <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar -mx-4 px-4">
+            <div class="flex gap-3 overflow-x-auto hide-scrollbar -mx-5 px-5 pb-4">
+
                 <!-- Add Card Button -->
-                <button
-                    class="flex-shrink-0 w-16 h-24 rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2 text-gray-400">
-                    <span class="material-symbols-outlined">add_card</span>
-                </button>
+                <a href="add-card.html"
+                    class="flex-shrink-0 w-20 h-28 bg-white border-[1.5px] border-dashed border-gray-200 hover:border-[#14d0a1] rounded-[20px] flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-[#14d0a1] transition-colors shadow-sm">
+                    <span class="material-symbols-rounded text-[28px]">add_card</span>
+                </a>
 
                 <!-- Visa Card -->
                 <div
-                    class="flex-shrink-0 w-40 h-24 bg-white dark:bg-zinc-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-zinc-700 flex flex-col justify-between relative overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-                        class="w-10 opacity-80" alt="Visa">
-                    <span class="text-sm font-mono font-bold text-gray-600 dark:text-gray-300">•••• 4242</span>
-                    <div class="absolute right-2 top-2 w-2 h-2 rounded-full bg-success"></div>
+                    class="flex-shrink-0 w-44 h-28 bg-[#001736] rounded-[20px] p-4 shadow-md border border-gray-800 flex flex-col justify-between relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl"></div>
+                    <div class="flex justify-between items-start relative z-10 w-full">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                            class="h-4 object-contain filter brightness-0 invert" alt="Visa">
+                        <div class="w-2 h-2 rounded-full bg-[#14d0a1] shadow-[0_0_8px_rgba(20,208,161,0.8)]"></div>
+                    </div>
+                    <span
+                        class="text-[15px] font-mono font-bold text-white relative z-10 tracking-widest mt-auto mb-1">••••
+                        4242</span>
                 </div>
 
                 <!-- Mastercard -->
                 <div
-                    class="flex-shrink-0 w-40 h-24 bg-white dark:bg-zinc-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-zinc-700 flex flex-col justify-between opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                        class="w-8 opacity-80" alt="Mastercard">
-                    <span class="text-sm font-mono font-bold text-gray-600 dark:text-gray-300">•••• 9889</span>
+                    class="flex-shrink-0 w-44 h-28 bg-white rounded-[20px] p-4 shadow-sm border border-gray-100 flex flex-col justify-between opacity-80 hover:opacity-100 transition-all hover:scale-[1.02] relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-orange-500/10 rounded-full blur-xl"></div>
+                    <div class="flex justify-between items-start relative z-10">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                            class="h-6 object-contain" alt="Mastercard">
+                    </div>
+                    <span
+                        class="text-[15px] font-mono font-bold text-gray-600 relative z-10 tracking-widest mt-auto mb-1">••••
+                        9889</span>
                 </div>
+
             </div>
         </div>
 
-        <!-- Transaction History -->
-        <div>
-            <h2 class="text-lg font-bold mb-4 px-2">ისტორია</h2>
+        <!-- Recent Transactions -->
+        <div class="mb-4">
+            <h2 class="text-[17px] font-bold text-[#001736] mb-4">Recent Activity</h2>
+
             <div class="flex flex-col gap-3">
 
+                <!-- Transaction 1 -->
                 <div
-                    class="bg-white dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[20px]">local_parking</span>
+                    class="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-[14px] bg-[#fff1f2] text-rose-500 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-rounded text-[24px]">local_parking</span>
                         </div>
-                        <div>
-                            <p class="font-bold text-sm">პარკინგი - ჭავჭავაძის #34</p>
-                            <p class="text-xs text-gray-400">დღეს, 14:30</p>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[14px] text-[#001736]">Parking - Freedom Sq.</h3>
+                            <span class="text-[12px] text-gray-400 font-medium">Today, 14:30</span>
                         </div>
                     </div>
-                    <span class="font-bold text-red-500">-3.00 ₾</span>
+                    <span class="font-bold text-[15px] text-[#001736]">-₾3.00</span>
                 </div>
 
+                <!-- Transaction 2 -->
                 <div
-                    class="bg-white dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-success/10 text-success flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                    class="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-[14px] bg-[#e4fff6] text-[#14d0a1] flex items-center justify-center shrink-0">
+                            <span class="material-symbols-rounded text-[24px]">account_balance_wallet</span>
                         </div>
-                        <div>
-                            <p class="font-bold text-sm">ბალანსის შევსება</p>
-                            <p class="text-xs text-gray-400">გუშინ, 10:15</p>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[14px] text-[#001736]">Wallet Top-Up</h3>
+                            <span class="text-[12px] text-gray-400 font-medium">Yesterday, 10:15</span>
                         </div>
                     </div>
-                    <span class="font-bold text-success">+20.00 ₾</span>
+                    <span class="font-bold text-[15px] text-[#14d0a1]">+₾20.00</span>
                 </div>
 
+                <!-- Transaction 3 -->
                 <div
-                    class="bg-white dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[20px]">local_parking</span>
+                    class="bg-white p-4 rounded-[20px] shadow-sm border border-gray-100 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-[14px] bg-[#fff1f2] text-rose-500 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-rounded text-[24px]">local_parking</span>
                         </div>
-                        <div>
-                            <p class="font-bold text-sm">პარკინგი - რუსთაველი #12</p>
-                            <p class="text-xs text-gray-400">2 თებ, 18:45</p>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[14px] text-[#001736]">Parking - Rustaveli Ave</h3>
+                            <span class="text-[12px] text-gray-400 font-medium">Feb 02, 18:45</span>
                         </div>
                     </div>
-                    <span class="font-bold text-red-500">-2.50 ₾</span>
+                    <span class="font-bold text-[15px] text-[#001736]">-₾2.50</span>
                 </div>
 
             </div>
@@ -180,43 +184,36 @@
 
     </main>
 
-    <div
-        class="fixed bottom-6 left-4 right-4 bg-white/60 dark:bg-black/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] py-4 px-6 flex justify-between items-center z-50 pointer-events-auto ring-1 ring-white/50 dark:ring-white/5">
-
-        <!-- Wallet (Active) -->
-        <a href="wallet.html" class="flex flex-col items-center gap-1 text-primary relative p-2">
-            <div class="absolute inset-0 bg-primary/10 rounded-2xl blur-lg scale-75"></div>
-            <span
-                class="material-symbols-outlined text-[32px] drop-shadow-sm relative z-10">account_balance_wallet</span>
-            <div class="h-1 w-1 bg-primary rounded-full mt-0.5 relative z-10"></div>
+    <!-- Bottom Navigation -->
+    <nav
+        class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 flex justify-between items-center z-40 pb-safe pt-2 px-1">
+        <a href="home.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
+            <span class="material-symbols-rounded text-[28px]">home</span>
+            <span class="text-[10px] mt-1 font-medium">Home</span>
         </a>
-
-        <!-- Vehicles -->
-        <a href="vehicles.html"
-            class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:text-gray-500 dark:hover:text-primary transition-colors group">
-            <span
-                class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">directions_car</span>
+        <a href="select-slot.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
+            <span class="material-symbols-rounded text-[28px]">local_activity</span>
+            <span class="text-[10px] mt-1 font-medium">Parking</span>
         </a>
-
-        <!-- Home -->
-        <a href="home.html"
-            class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:text-gray-500 dark:hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">home</span>
+        <a href="history.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
+            <span class="material-symbols-rounded text-[28px]">schedule</span>
+            <span class="text-[10px] mt-1 font-medium">Bookings</span>
         </a>
-
-        <!-- History -->
-        <a href="history.html"
-            class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:text-gray-500 dark:hover:text-primary transition-colors group">
-            <span
-                class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">history</span>
+        <a href="vehicles.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
+            <span class="material-symbols-rounded text-[28px]">directions_car</span>
+            <span class="text-[10px] mt-1 font-medium">Vehicles</span>
         </a>
-
-        <!-- Profile -->
-        <a href="profile.html"
-            class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:text-gray-500 dark:hover:text-primary transition-colors group">
-            <span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">person</span>
+        <a href="profile.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
+            <span class="material-symbols-rounded text-[28px]">person</span>
+            <span class="text-[10px] mt-1 font-medium">Profile</span>
         </a>
-    </div>
+    </nav>
+    <style>
+        /* Override wallet button active styling to mimic others but fit in generic nav */
+        a[href="wallet.html"] {
+            /* Handled globally via different navigation patterns, keeping generic for now or user can inject */
+        }
+    </style>
 </body>
 
 </html>

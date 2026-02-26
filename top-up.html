@@ -1,118 +1,95 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - ბალანსის შევსება</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Top Up Balance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f2321",
-                        "surface": "#ffffff",
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                    boxShadow: {
-                        "soft": "0 10px 40px -10px rgba(0,0,0,0.05)",
-                    }
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f8f9fb" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
     <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
+        .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
-        .no-scrollbar {
+        .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-10">
 
     <!-- Header -->
-    <div
-        class="px-6 pt-12 pb-6 flex items-center justify-between z-10 sticky top-0 bg-gray-50/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div class="flex items-center gap-4">
-            <button onclick="history.back()"
-                class="p-3 bg-white dark:bg-white/10 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
-                <span class="material-symbols-rounded text-gray-600 dark:text-gray-200">arrow_back</span>
+    <header
+        class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background/90 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <button onclick="history.back()" class="p-1 text-[#001736]">
+                <span class="material-symbols-rounded text-2xl">arrow_back</span>
             </button>
-            <h1 class="text-xl font-bold text-gray-800 dark:text-white">ბალანსის შევსება</h1>
+            <h1 class="text-[22px] font-extrabold text-[#001736]">Top Up Balance</h1>
         </div>
         <div class="w-10"></div>
-    </div>
+    </header>
 
-    <!-- Scrollable Content -->
-    <div class="flex-1 overflow-y-auto no-scrollbar pb-32 px-6">
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto hide-scrollbar px-5 pt-2 pb-10">
 
         <!-- Input Amount -->
         <div
-            class="bg-white dark:bg-white/5 p-8 rounded-[2rem] shadow-sm mb-6 flex flex-col items-center justify-center text-center">
-            <label class="text-sm font-medium text-gray-400 mb-2">თანხა</label>
-            <div class="flex items-baseline gap-1 relative">
+            class="bg-white p-8 rounded-[28px] shadow-sm border border-gray-100 mb-6 flex flex-col items-center justify-center text-center">
+            <label class="text-[14px] font-bold text-gray-400 uppercase tracking-widest mb-2">Amount</label>
+            <div class="flex items-center justify-center gap-1 relative">
                 <input type="number" value="10"
-                    class="bg-transparent border-none text-6xl font-bold text-gray-800 dark:text-white text-center w-40 p-0 focus:ring-0 placeholder:text-gray-200"
+                    class="bg-transparent border-none text-[64px] font-extrabold text-[#001736] text-center w-36 p-0 focus:ring-0 placeholder:text-gray-200 outline-none"
                     placeholder="0">
-                <span class="text-2xl font-bold text-gray-400 absolute -right-6 top-4">₾</span>
+                <span class="text-[28px] font-bold text-gray-400">₾</span>
             </div>
         </div>
 
         <!-- Quick Amounts -->
         <div class="grid grid-cols-3 gap-3 mb-8">
             <button
-                class="bg-white dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all p-4 rounded-2xl font-bold text-gray-600 dark:text-gray-300 shadow-sm border border-transparent hover:border-primary/20">
-                5 ₾
+                class="bg-white hover:bg-gray-50 transition-colors py-4 rounded-[20px] font-bold text-gray-600 shadow-sm border border-gray-100 flex items-center justify-center gap-1">
+                5 <span class="text-[12px] opacity-70">₾</span>
             </button>
             <button
-                class="bg-primary text-white p-4 rounded-2xl font-bold shadow-lg shadow-primary/30 transform scale-105 border border-primary">
-                10 ₾
+                class="bg-[#14d0a1] text-white py-4 rounded-[20px] font-bold shadow-[0_8px_16px_rgba(20,208,161,0.25)] transform scale-[1.02] border border-[#14d0a1] flex items-center justify-center gap-1">
+                10 <span class="text-[12px] opacity-90">₾</span>
             </button>
             <button
-                class="bg-white dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all p-4 rounded-2xl font-bold text-gray-600 dark:text-gray-300 shadow-sm border border-transparent hover:border-primary/20">
-                20 ₾
+                class="bg-white hover:bg-gray-50 transition-colors py-4 rounded-[20px] font-bold text-gray-600 shadow-sm border border-gray-100 flex items-center justify-center gap-1">
+                20 <span class="text-[12px] opacity-70">₾</span>
             </button>
             <button
-                class="bg-white dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all p-4 rounded-2xl font-bold text-gray-600 dark:text-gray-300 shadow-sm border border-transparent hover:border-primary/20">
-                50 ₾
+                class="bg-white hover:bg-gray-50 transition-colors py-4 rounded-[20px] font-bold text-gray-600 shadow-sm border border-gray-100 flex items-center justify-center gap-1">
+                50 <span class="text-[12px] opacity-70">₾</span>
             </button>
             <button
-                class="bg-white dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all p-4 rounded-2xl font-bold text-gray-600 dark:text-gray-300 shadow-sm border border-transparent hover:border-primary/20">
-                100 ₾
+                class="bg-white hover:bg-gray-50 transition-colors py-4 rounded-[20px] font-bold text-gray-600 shadow-sm border border-gray-100 flex items-center justify-center gap-1">
+                100 <span class="text-[12px] opacity-70">₾</span>
             </button>
             <button
-                class="bg-white dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all p-4 rounded-2xl font-bold text-gray-600 dark:text-gray-300 shadow-sm border border-transparent hover:border-primary/20">
-                სხვა
+                class="bg-white hover:bg-gray-50 transition-colors py-4 rounded-[20px] font-bold text-gray-600 shadow-sm border border-gray-100 flex items-center justify-center">
+                Other
             </button>
         </div>
 
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4">გადახდის მეთოდი</h2>
+        <h2 class="text-[13px] font-bold text-gray-400 uppercase tracking-widest ml-1 mb-4">Payment Method</h2>
 
         <!-- Cards List -->
         <div class="flex flex-col gap-3">
@@ -121,21 +98,22 @@
             <label class="cursor-pointer">
                 <input type="radio" name="payment_card" class="peer sr-only" checked>
                 <div
-                    class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary/5 flex items-center justify-between transition-all">
+                    class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-transparent peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-8 bg-gray-100 rounded flex items-center justify-center p-1">
+                        <div
+                            class="w-12 h-8 bg-[#f4f5f8] rounded-lg flex items-center justify-center p-1 border border-gray-200">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                                 class="h-full object-contain">
                         </div>
-                        <div>
-                            <p class="font-bold text-gray-800 dark:text-white">Visa</p>
-                            <p class="text-xs text-gray-400 font-mono">•••• 4242</p>
+                        <div class="flex flex-col">
+                            <p class="font-bold text-[#001736] text-[15px]">Visa</p>
+                            <p class="text-[12px] text-gray-400 font-mono font-bold tracking-widest">•••• 4242</p>
                         </div>
                     </div>
                     <div
-                        class="w-6 h-6 rounded-full border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+                        class="w-6 h-6 rounded-full border-[2px] border-gray-200 peer-checked:border-[#14d0a1] peer-checked:bg-[#14d0a1] flex items-center justify-center transition-colors">
                         <span
-                            class="material-symbols-rounded text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+                            class="material-symbols-rounded text-white text-[16px] opacity-0 peer-checked:opacity-100">check</span>
                     </div>
                 </div>
             </label>
@@ -144,21 +122,22 @@
             <label class="cursor-pointer">
                 <input type="radio" name="payment_card" class="peer sr-only">
                 <div
-                    class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary/5 flex items-center justify-between transition-all">
+                    class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-white hover:border-gray-200 peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-8 bg-gray-100 rounded flex items-center justify-center p-1">
+                        <div
+                            class="w-12 h-8 bg-[#f4f5f8] rounded-lg flex items-center justify-center p-1 border border-gray-200">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
                                 class="h-full object-contain">
                         </div>
-                        <div>
-                            <p class="font-bold text-gray-800 dark:text-white">Mastercard</p>
-                            <p class="text-xs text-gray-400 font-mono">•••• 9889</p>
+                        <div class="flex flex-col">
+                            <p class="font-bold text-[#001736] text-[15px]">Mastercard</p>
+                            <p class="text-[12px] text-gray-400 font-mono font-bold tracking-widest">•••• 9889</p>
                         </div>
                     </div>
                     <div
-                        class="w-6 h-6 rounded-full border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+                        class="w-6 h-6 rounded-full border-[2px] border-gray-200 bg-gray-50 peer-checked:border-[#14d0a1] peer-checked:bg-[#14d0a1] flex items-center justify-center transition-colors">
                         <span
-                            class="material-symbols-rounded text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+                            class="material-symbols-rounded text-white text-[16px] opacity-0 peer-checked:opacity-100">check</span>
                     </div>
                 </div>
             </label>
@@ -167,42 +146,43 @@
             <label class="cursor-pointer">
                 <input type="radio" name="payment_card" class="peer sr-only">
                 <div
-                    class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary/5 flex items-center justify-between transition-all">
+                    class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-white hover:border-gray-200 peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-8 bg-black rounded flex items-center justify-center p-1">
-                            <span class="material-symbols-rounded text-white">apple</span>
+                        <div
+                            class="w-12 h-8 bg-[#001736] rounded-lg flex items-center justify-center p-1 border border-[#001736]">
+                            <span class="material-symbols-rounded text-white text-[20px]">apple</span>
                         </div>
-                        <div>
-                            <p class="font-bold text-gray-800 dark:text-white">Apple Pay</p>
+                        <div class="flex flex-col">
+                            <p class="font-bold text-[#001736] text-[15px]">Apple Pay</p>
                         </div>
                     </div>
                     <div
-                        class="w-6 h-6 rounded-full border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center">
+                        class="w-6 h-6 rounded-full border-[2px] border-gray-200 bg-gray-50 peer-checked:border-[#14d0a1] peer-checked:bg-[#14d0a1] flex items-center justify-center transition-colors">
                         <span
-                            class="material-symbols-rounded text-white text-[14px] opacity-0 peer-checked:opacity-100">check</span>
+                            class="material-symbols-rounded text-white text-[16px] opacity-0 peer-checked:opacity-100">check</span>
                     </div>
                 </div>
             </label>
 
             <!-- Add New Card -->
             <a href="add-card.html"
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border-2 border-dashed border-primary/30 flex items-center gap-4 hover:bg-primary/5 transition-all text-primary group">
+                class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-dashed border-gray-300 flex items-center gap-4 hover:border-[#14d0a1] hover:bg-[#14d0a1]/5 transition-all text-[#001736] group">
                 <div
-                    class="w-12 h-8 rounded bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    class="w-12 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-[#14d0a1]/10 group-hover:text-[#14d0a1] transition-colors">
                     <span class="material-symbols-rounded">add</span>
                 </div>
-                <span class="font-bold">ახალი ბარათის დამატება</span>
+                <span class="font-bold text-[15px]">Add New Card</span>
             </a>
 
         </div>
 
         <a href="top-up-success.html"
-            class="w-full bg-primary text-white font-bold py-4 rounded-[1.5rem] mt-8 shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all flex items-center justify-center gap-2 group">
-            <span>შევსება</span>
-            <span class="material-symbols-rounded group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            class="w-full bg-gradient-to-r from-[#17e3ae] to-[#8affda] text-[#003822] font-bold py-4 rounded-2xl shadow-[0_8px_16px_rgba(20,208,161,0.25)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-[16px] mt-8 hover:opacity-90">
+            <span>Confirm Payment</span>
+            <span class="material-symbols-rounded text-[20px]">arrow_forward</span>
         </a>
 
-    </div>
+        </div>
 
 </body>
 

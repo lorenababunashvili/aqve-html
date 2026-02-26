@@ -1,56 +1,33 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - დაჯავშნა</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Reservation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#0f2321",
-                        "success": "#22C55E",
-                        "surface": "#ffffff",
-                        "surface-dark": "#18181b"
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f0f3f5" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
     <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .dark .glass-panel {
-            background: rgba(15, 35, 33, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         /* Custom Date Input Styling */
@@ -69,47 +46,52 @@
     </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col relative overflow-hidden">
-
-    <!-- Background Decoration -->
-    <div
-        class="fixed top-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-primary/20 rounded-full blur-3xl pointer-events-none">
-    </div>
-    <div
-        class="fixed bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-primary-bright/10 rounded-full blur-3xl pointer-events-none">
-    </div>
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative overflow-hidden pb-32">
 
     <!-- Header -->
-    <div class="px-6 pt-8 pb-4 z-10 flex items-center gap-4">
-        <a href="lot-details.html"
-            class="p-2.5 bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-300">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h1 class="text-xl font-bold">დაჯავშნა</h1>
-    </div>
+    <header
+        class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background/90 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <button onclick="history.back()" class="p-1 text-[#001736]">
+                <span class="material-symbols-rounded text-2xl">arrow_back</span>
+            </button>
+            <h1 class="text-[22px] font-extrabold text-[#001736]">Reservation</h1>
+        </div>
+        <div class="w-10"></div>
+    </header>
 
-    <div class="flex-1 px-6 pb-28 z-10 flex flex-col gap-6 overflow-y-auto">
+    <div class="flex-1 px-5 pt-4 flex flex-col gap-6 overflow-y-auto hide-scrollbar z-10">
 
         <!-- Time Selection -->
         <div class="flex flex-col gap-3">
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-1">დროის არჩევა</h2>
-            <div class="glass-panel p-4 rounded-3xl shadow-sm flex flex-col gap-4">
-                <div class="flex flex-col gap-2">
-                    <label class="text-xs font-bold text-gray-500">დასაწყისი</label>
-                    <div class="relative bg-white/50 dark:bg-black/20 rounded-xl px-4 py-3 flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary">calendar_today</span>
+            <h2 class="text-[14px] font-bold text-[#001736]">Select Time</h2>
+            <div class="bg-white p-4 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-4">
+
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[12px] font-bold uppercase tracking-wider text-gray-400 ml-1">Start Time</label>
+                    <div
+                        class="relative bg-gray-50 rounded-[20px] px-4 py-3.5 flex items-center gap-3 border border-gray-100 focus-within:border-[#14d0a1] transition-colors group">
+                        <span
+                            class="material-symbols-rounded text-[20px] text-gray-400 group-focus-within:text-[#14d0a1] transition-colors">calendar_today</span>
                         <input type="datetime-local" id="start-time"
-                            class="bg-transparent border-none p-0 text-sm font-bold w-full focus:ring-0 text-gray-800 dark:text-white">
+                            class="bg-transparent border-none p-0 text-[15px] font-bold w-full focus:ring-0 text-[#001736] outline-none">
                     </div>
                 </div>
-                <div class="w-full h-px bg-gray-200 dark:bg-gray-700/50"></div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-xs font-bold text-gray-500">დასასრული</label>
-                    <div class="relative bg-white/50 dark:bg-black/20 rounded-xl px-4 py-3 flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary">event_busy</span>
+
+                <div class="w-full flex items-center gap-2">
+                    <div class="h-px bg-gray-200 flex-1"></div>
+                    <span class="material-symbols-rounded text-gray-300 text-[18px]">keyboard_double_arrow_down</span>
+                    <div class="h-px bg-gray-200 flex-1"></div>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label class="text-[12px] font-bold uppercase tracking-wider text-gray-400 ml-1">End Time</label>
+                    <div
+                        class="relative bg-gray-50 rounded-[20px] px-4 py-3.5 flex items-center gap-3 border border-gray-100 focus-within:border-[#14d0a1] transition-colors group">
+                        <span
+                            class="material-symbols-rounded text-[20px] text-gray-400 group-focus-within:text-[#14d0a1] transition-colors">event_busy</span>
                         <input type="datetime-local" id="end-time"
-                            class="bg-transparent border-none p-0 text-sm font-bold w-full focus:ring-0 text-gray-800 dark:text-white">
+                            class="bg-transparent border-none p-0 text-[15px] font-bold w-full focus:ring-0 text-[#001736] outline-none">
                     </div>
                 </div>
             </div>
@@ -117,25 +99,26 @@
 
         <!-- Spot Type Selection -->
         <div class="flex flex-col gap-3">
-            <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-1">ადგილის ტიპი</h2>
+            <h2 class="text-[14px] font-bold text-[#001736]">Spot Type</h2>
+
             <div class="grid grid-cols-1 gap-3">
 
                 <!-- Standard -->
                 <label class="relative cursor-pointer group">
                     <input type="radio" name="spot-type" value="standard" class="peer sr-only" checked>
                     <div
-                        class="glass-panel p-4 rounded-2xl flex items-center gap-4 peer-checked:ring-2 peer-checked:ring-primary transition-all">
+                        class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-transparent peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center gap-4 transition-all">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-500">
-                            <span class="material-symbols-outlined">local_parking</span>
+                            class="w-12 h-12 rounded-[14px] bg-gray-100 flex items-center justify-center text-gray-500 peer-checked:bg-white peer-checked:text-[#14d0a1] transition-colors">
+                            <span class="material-symbols-rounded">local_parking</span>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-sm">სტანდარტული</h3>
-                            <p class="text-xs text-gray-500">ჩვეულებრივი ადგილი</p>
+                        <div class="flex-1 flex flex-col">
+                            <h3 class="font-bold text-[#001736] text-[15px]">Standard</h3>
+                            <p class="text-[12px] text-gray-400 font-medium">Regular parking spot</p>
                         </div>
                         <div class="text-right">
-                            <span class="block font-bold text-primary">3₾</span>
-                            <span class="text-[10px] text-gray-400 uppercase">სთ</span>
+                            <span class="block font-bold text-[#001736] text-[16px]">3.00₾</span>
+                            <span class="text-[11px] text-gray-400 font-bold uppercase">/ hr</span>
                         </div>
                     </div>
                 </label>
@@ -144,18 +127,19 @@
                 <label class="relative cursor-pointer group">
                     <input type="radio" name="spot-type" value="vip" class="peer sr-only">
                     <div
-                        class="glass-panel p-4 rounded-2xl flex items-center gap-4 peer-checked:ring-2 peer-checked:ring-primary transition-all">
+                        class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-transparent peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center gap-4 transition-all">
                         <div
-                            class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
-                            <span class="material-symbols-outlined">star</span>
+                            class="w-12 h-12 rounded-[14px] bg-[#fffbed] flex items-center justify-center text-amber-500 peer-checked:bg-white transition-colors">
+                            <span class="material-symbols-rounded"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-sm">VIP ადგილი</h3>
-                            <p class="text-xs text-gray-500">შესასვლელთან ახლოს</p>
+                        <div class="flex-1 flex flex-col">
+                            <h3 class="font-bold text-[#001736] text-[15px]">VIP Spot</h3>
+                            <p class="text-[12px] text-gray-400 font-medium">Close to entrance</p>
                         </div>
                         <div class="text-right">
-                            <span class="block font-bold text-amber-600">4.5₾</span>
-                            <span class="text-[10px] text-gray-400 uppercase">სთ</span>
+                            <span class="block font-bold text-[#001736] text-[16px]">4.50₾</span>
+                            <span class="text-[11px] text-gray-400 font-bold uppercase">/ hr</span>
                         </div>
                     </div>
                 </label>
@@ -164,18 +148,18 @@
                 <label class="relative cursor-pointer group">
                     <input type="radio" name="spot-type" value="ev" class="peer sr-only">
                     <div
-                        class="glass-panel p-4 rounded-2xl flex items-center gap-4 peer-checked:ring-2 peer-checked:ring-primary transition-all">
+                        class="bg-white p-4 rounded-[24px] shadow-sm border-[1.5px] border-transparent peer-checked:border-[#14d0a1] peer-checked:bg-[#e4fff6] flex items-center gap-4 transition-all">
                         <div
-                            class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/20 flex items-center justify-center text-green-600">
-                            <span class="material-symbols-outlined">ev_station</span>
+                            class="w-12 h-12 rounded-[14px] bg-[#f0fdf4] flex items-center justify-center text-green-500 peer-checked:bg-white transition-colors">
+                            <span class="material-symbols-rounded">ev_station</span>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-sm">ელ-დამტენი</h3>
-                            <p class="text-xs text-gray-500">დამტენით აღჭურვილი</p>
+                        <div class="flex-1 flex flex-col">
+                            <h3 class="font-bold text-[#001736] text-[15px]">EV Charger</h3>
+                            <p class="text-[12px] text-gray-400 font-medium">Equipped w/ charger</p>
                         </div>
                         <div class="text-right">
-                            <span class="block font-bold text-green-600">6₾</span>
-                            <span class="text-[10px] text-gray-400 uppercase">სთ</span>
+                            <span class="block font-bold text-[#001736] text-[16px]">6.00₾</span>
+                            <span class="text-[11px] text-gray-400 font-bold uppercase">/ hr</span>
                         </div>
                     </div>
                 </label>
@@ -187,20 +171,21 @@
 
     <!-- Bottom Action Bar -->
     <div
-        class="fixed bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-white via-white to-transparent dark:from-[#0f2321] dark:via-[#0f2321] pt-10">
+        class="fixed bottom-0 left-0 right-0 p-5 z-20 bg-gradient-to-t from-background via-background to-transparent pt-12 pb-safe">
         <div
-            class="glass-panel p-4 rounded-3xl shadow-lg border-t border-white/50 dark:border-white/10 flex items-center justify-between gap-4 mb-2">
-            <div>
-                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase mb-0.5">სულ გადასახდელი</p>
-                <div class="flex items-baseline gap-1">
-                    <span id="total-price" class="text-2xl font-extrabold text-primary">0</span>
-                    <span class="text-sm font-bold text-primary">₾</span>
+            class="bg-white p-5 rounded-[28px] shadow-[0_-4px_24px_rgba(0,0,0,0.05)] border border-gray-100 flex items-center justify-between gap-4 w-full relative z-30">
+            <div class="flex flex-col gap-0.5">
+                <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest pl-1">Total Due</p>
+                <div class="flex items-baseline gap-1 relative z-30">
+                    <span id="total-price"
+                        class="text-[28px] font-extrabold text-[#001736] tracking-tight ml-0.5">0.00</span>
+                    <span class="text-[16px] font-bold text-gray-400">₾</span>
                 </div>
             </div>
             <a href="booking-success.html"
-                class="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-primary/30 transition-all active:scale-[0.98] flex items-center gap-2">
-                <span>გადახდა და დაჯავშნა</span>
-                <span class="material-symbols-outlined text-[20px]">payments</span>
+                class="bg-gradient-to-r from-[#17e3ae] to-[#8affda] text-[#003822] hover:opacity-90 font-bold py-4 px-6 rounded-[20px] shadow-[0_8px_16px_rgba(20,208,161,0.25)] transition-all active:scale-[0.98] flex items-center gap-2">
+                <span class="text-[16px]">Confirm</span>
+                <span class="material-symbols-rounded text-[20px]">payments</span>
             </a>
         </div>
     </div>
@@ -221,7 +206,7 @@
 
             // Set default times (Now -> Now + 2h)
             const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // Adjust to local styling
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
             startInput.value = now.toISOString().slice(0, 16);
 
             const twoHoursLater = new Date(now);
@@ -233,7 +218,7 @@
                 const end = new Date(endInput.value);
 
                 if (end <= start) {
-                    totalPriceEl.textContent = "0";
+                    totalPriceEl.textContent = "0.00";
                     return;
                 }
 

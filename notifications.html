@@ -1,155 +1,136 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - შეტყობინებები</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f2321",
-                        "surface": "#ffffff",
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                    boxShadow: {
-                        "soft": "0 10px 40px -10px rgba(0,0,0,0.05)",
-                    }
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f8f9fb" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
-    <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-20">
 
     <!-- Header -->
-    <div
-        class="px-6 pt-12 pb-6 flex items-center justify-between z-10 sticky top-0 bg-gray-50/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div class="flex items-center gap-4">
-            <button onclick="history.back()"
-                class="p-3 bg-white dark:bg-white/10 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
-                <span class="material-symbols-rounded text-gray-600 dark:text-gray-200">arrow_back</span>
+    <header class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background">
+        <div class="flex items-center gap-3">
+            <button onclick="history.back()" class="p-1 text-gray-800">
+                <span class="material-symbols-rounded text-2xl">arrow_back</span>
             </button>
-            <h1 class="text-xl font-bold text-gray-800 dark:text-white">შეტყობინებები</h1>
+            <h1 class="text-[22px] font-bold text-gray-900">Notifications</h1>
         </div>
-        <button class="p-3 bg-white dark:bg-white/10 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
-            <span class="material-symbols-rounded text-gray-600 dark:text-gray-200">check_circle</span>
+        <button class="text-[#14d0a1] px-1 py-2 text-[13px] font-bold flex items-center transition-colors">
+            Mark all read
         </button>
+    </header>
+
+    <!-- Tabs Container -->
+    <div class="px-5 mb-5 mt-1">
+        <div class="flex gap-2">
+            <button
+                class="px-5 py-2.5 bg-[#001736] rounded-[14px] shadow-sm text-[13px] font-bold text-white transition-all whitespace-nowrap">
+                All
+            </button>
+            <button
+                class="px-5 py-2.5 bg-white border-2 border-transparent text-[13px] font-bold text-gray-500 hover:text-gray-800 rounded-[14px] shadow-sm transition-colors whitespace-nowrap">
+                Unread
+            </button>
+            <button
+                class="px-5 py-2.5 bg-white border-2 border-transparent text-[13px] font-bold text-gray-500 hover:text-gray-800 rounded-[14px] shadow-sm transition-colors whitespace-nowrap">
+                Promos
+            </button>
+        </div>
     </div>
 
-    <!-- Scrollable Content -->
-    <div class="flex-1 overflow-y-auto no-scrollbar pb-32 px-6">
+    <!-- Main Content -->
+    <main class="flex-1 px-5 flex flex-col gap-3">
 
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4">დღეს</h2>
+        <!-- Notification Card 1 (Warning/Timer) -->
+        <div
+            class="bg-[#fdf8f4] border border-[#fbd8c0] rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-[#faeedd] transition-colors relative shadow-sm">
+            <!-- Unread dot -->
+            <div class="absolute top-4 right-4 w-2 h-2 bg-orange-500 rounded-full"></div>
 
-        <div class="flex flex-col gap-4">
-            <!-- Notification Item 1 -->
-            <div
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-white/5 relative overflow-hidden group hover:scale-[1.01] transition-transform">
-                <div class="flex gap-4">
-                    <div
-                        class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-                        <span class="material-symbols-rounded">local_parking</span>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="font-bold text-gray-800 dark:text-white">პარკინგი დასრულდა</h3>
-                            <span class="text-xs text-gray-400 font-medium">12:30</span>
-                        </div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                            თქვენი პარკინგი ჭავჭავაძის გამზ. #34-ში წარმატებით დასრულდა. თანხა: 3.50₾
-                        </p>
-                    </div>
-                </div>
-                <!-- Unread Indicator -->
-                <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full"></div>
+            <div class="w-12 h-12 bg-orange-100 rounded-[14px] flex items-center justify-center shrink-0">
+                <span class="material-symbols-rounded text-orange-500 text-[24px]">timer</span>
             </div>
-
-            <!-- Notification Item 2 -->
-            <div
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-white/5 relative overflow-hidden group hover:scale-[1.01] transition-transform">
-                <div class="flex gap-4">
-                    <div
-                        class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 flex items-center justify-center flex-shrink-0">
-                        <span class="material-symbols-rounded">confirmation_number</span>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="font-bold text-gray-800 dark:text-white">ახალი პრომო კოდი!</h3>
-                            <span class="text-xs text-gray-400 font-medium">10:00</span>
-                        </div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                            თქვენ მიიღეთ 20%-იანი ფასდაკლების პრომო კოდი: <span
-                                class="font-bold text-gray-700 dark:text-gray-300">WELCOME20</span>. გამოიყენეთ 3 დღის
-                            განმავლობაში.
-                        </p>
-                    </div>
-                </div>
-                <!-- Unread Indicator -->
-                <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full"></div>
-            </div>
-        </div>
-
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider ml-2 mb-4 mt-8">გუშინ</h2>
-
-        <div class="flex flex-col gap-4">
-            <!-- Notification Item 3 -->
-            <div
-                class="bg-white dark:bg-white/5 p-4 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-white/5 relative overflow-hidden group hover:scale-[1.01] transition-transform opacity-75">
-                <div class="flex gap-4">
-                    <div
-                        class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center flex-shrink-0">
-                        <span class="material-symbols-rounded">security</span>
-                    </div>
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="font-bold text-gray-800 dark:text-white">უსაფრთხოების გაფრთხილება</h3>
-                            <span class="text-xs text-gray-400 font-medium">18:45</span>
-                        </div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                            თქვენს ანგარიშზე დაფიქსირდა შესვლის მცდელობა ახალი მოწყობილობიდან.
-                        </p>
-                    </div>
+            <div class="flex-1 min-w-0 pr-4">
+                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Session Ending Soon
+                </h3>
+                <p class="text-[13px] text-gray-600 font-medium leading-relaxed">Your parking session at Freedom Square
+                    will expire in 15 minutes. Would you like to extend it?</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Just now</span>
                 </div>
             </div>
         </div>
 
-    </div>
+        <!-- Notification Card 2 (Success/Booking) -->
+        <div
+            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm">
+            <div class="w-12 h-12 bg-[#e8faf3] rounded-[14px] flex items-center justify-center shrink-0">
+                <span class="material-symbols-rounded text-[#14d0a1] text-[24px]">task_alt</span>
+            </div>
+            <div class="flex-1 min-w-0 pr-4">
+                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Booking Confirmed!
+                </h3>
+                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Your reservation for Rustaveli Avenue
+                    Garage (Slot D-2) is confirmed for tomorrow at 09:00 AM.</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">2 hours ago</span>
+                </div>
+            </div>
+        </div>
 
+        <!-- Notification Card 3 (Promo) -->
+        <div
+            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm opacity-70">
+            <div
+                class="w-12 h-12 bg-blue-50 rounded-[14px] flex items-center justify-center shrink-0 border border-blue-100">
+                <span class="material-symbols-rounded text-blue-500 text-[24px]">local_activity</span>
+            </div>
+            <div class="flex-1 min-w-0 pr-4">
+                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Weekend Discount 💰
+                </h3>
+                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Get 20% off all parking slots this
+                    weekend using code: WKND20 at checkout.</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Yesterday</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Card 4 (Info) -->
+        <div
+            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm opacity-70">
+            <div
+                class="w-12 h-12 bg-gray-100 rounded-[14px] flex items-center justify-center shrink-0 border border-gray-200">
+                <span class="material-symbols-rounded text-gray-500 text-[24px]">info</span>
+            </div>
+            <div class="flex-1 min-w-0 pr-4">
+                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">System Update</h3>
+                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">We've added 3 new parking lots in the
+                    Saburtalo area. Check them out on the map!</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Oct 12, 2025</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
 </body>
 
 </html>

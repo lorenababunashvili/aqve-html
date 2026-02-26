@@ -1,146 +1,155 @@
 <!DOCTYPE html>
-<html class="light" lang="ka">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>აქვე - მენიუ</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUE - Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.web-fonts.ge/fonts/bpg-phone-sans/css/bpg-phone-sans.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#009485",
-                        "primary-bright": "#00C2AF",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#0f2321",
-                        "success": "#22C55E",
-                        "surface": "#ffffff",
-                        "surface-dark": "#18181b"
-                    },
-                    fontFamily: {
-                        "display": ["BPG Phone Sans", "sans-serif"],
-                        "sans": ["BPG Phone Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                },
-            },
+                    colors: { primary: "#14d0a1", background: "#f8f9fb" },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
     </script>
     <style>
-        body {
-            font-family: 'BPG Phone Sans', sans-serif;
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative">
 
     <!-- Header / Profile Section -->
     <header
-        class="px-6 pt-12 pb-8 bg-white dark:bg-surface-dark rounded-b-[2.5rem] shadow-[0_4px_20px_rgb(0,0,0,0.04)] z-20">
-        <div class="flex items-center justify-between mb-6">
-            <a href="home.html"
-                class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined">close</span>
-            </a>
-            <button class="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-                <span class="material-symbols-outlined">settings</span>
+        class="px-5 pt-12 pb-8 bg-white rounded-b-[40px] shadow-sm z-20 border-b border-gray-100 flex flex-col gap-6">
+
+        <div class="flex items-center justify-between">
+            <button onclick="history.back()"
+                class="p-2 -ml-2 rounded-full hover:bg-gray-50 transition-colors text-[#001736]">
+                <span class="material-symbols-rounded text-[28px]">close</span>
+            </button>
+            <button class="p-2 -mr-2 rounded-full hover:bg-gray-50 transition-colors text-[#001736]">
+                <span class="material-symbols-rounded text-[24px]">settings</span>
             </button>
         </div>
 
         <div class="flex items-center gap-4">
             <div
-                class="w-20 h-20 rounded-full bg-gray-100 dark:bg-zinc-800 overflow-hidden border-4 border-white dark:border-zinc-900 shadow-lg flex items-center justify-center text-gray-400 dark:text-gray-500">
-                <span class="material-symbols-outlined text-[48px]">person</span>
+                class="w-[84px] h-[84px] rounded-full bg-gray-50 overflow-hidden border-[4px] border-white shadow-sm flex items-center justify-center text-gray-300 relative">
+                <span class="material-symbols-rounded text-[48px]">person</span>
             </div>
-            <div>
-                <h1 class="text-2xl font-bold">გიორგი გ.</h1>
-                <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">+995 555 12 34 56</p>
+            <div class="flex flex-col">
+                <h1 class="text-[22px] font-extrabold text-[#001736] tracking-tight leading-tight">Giorgi G.</h1>
+                <p class="text-gray-400 text-[13px] font-bold tracking-wide mt-1">+995 555 12 34 56</p>
                 <div
-                    class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold">
-                    <span class="material-symbols-outlined text-[14px]">star</span>
-                    <span>Gold წევრი</span>
+                    class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 bg-[#fffbed] text-amber-500 rounded-lg text-[11px] font-bold uppercase tracking-widest w-max border border-amber-100 shadow-sm">
+                    <span class="material-symbols-rounded text-[14px]"
+                        style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span>Gold Member</span>
                 </div>
             </div>
         </div>
+
     </header>
 
     <!-- Menu Links -->
-    <main class="flex-1 px-6 py-8 flex flex-col gap-2">
+    <main class="flex-1 px-5 py-6 flex flex-col gap-3 hide-scrollbar overflow-y-auto">
 
         <a href="wallet.html"
-            class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
-            <div class="w-10 h-10 rounded-full bg-success/10 text-success flex items-center justify-center">
-                <span class="material-symbols-outlined">account_balance_wallet</span>
+            class="flex items-center gap-4 p-4 rounded-[24px] bg-white border border-gray-100 shadow-sm hover:border-[#14d0a1] transition-all active:scale-[0.98] group">
+            <div
+                class="w-12 h-12 rounded-[14px] bg-[#e4fff6] text-[#14d0a1] flex items-center justify-center transition-colors">
+                <span class="material-symbols-rounded">account_balance_wallet</span>
             </div>
-            <div class="flex-1">
-                <h3 class="font-bold">საფულე</h3>
-                <p class="text-xs text-gray-500">24.50 ₾</p>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-bold text-[#001736] text-[15px]">Wallet</h3>
+                <p class="text-[12px] text-gray-400 font-bold mt-0.5">24.50 ₾</p>
             </div>
-            <span class="material-symbols-outlined text-gray-300">chevron_right</span>
+            <span
+                class="material-symbols-rounded text-gray-300 group-hover:text-[#14d0a1] transition-colors">chevron_right</span>
         </a>
 
         <a href="vehicles.html"
-            class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
-            <div class="w-10 h-10 rounded-full bg-blue-500/10 text-blue-600 flex items-center justify-center">
-                <span class="material-symbols-outlined">directions_car</span>
+            class="flex items-center gap-4 p-4 rounded-[24px] bg-white border border-gray-100 shadow-sm hover:border-[#14d0a1] transition-all active:scale-[0.98] group">
+            <div
+                class="w-12 h-12 rounded-[14px] bg-gray-50 text-[#001736] flex items-center justify-center group-hover:bg-[#14d0a1]/10 group-hover:text-[#14d0a1] transition-colors">
+                <span class="material-symbols-rounded">directions_car</span>
             </div>
-            <div class="flex-1">
-                <h3 class="font-bold">ავტომობილები</h3>
-                <p class="text-xs text-gray-500">2 ავტომობილი</p>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-bold text-[#001736] text-[15px]">Vehicles</h3>
+                <p class="text-[12px] text-gray-400 font-bold mt-0.5">2 Vehicles</p>
             </div>
-            <span class="material-symbols-outlined text-gray-300">chevron_right</span>
+            <span
+                class="material-symbols-rounded text-gray-300 group-hover:text-[#14d0a1] transition-colors">chevron_right</span>
         </a>
 
         <a href="history.html"
-            class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
-            <div class="w-10 h-10 rounded-full bg-orange-500/10 text-orange-600 flex items-center justify-center">
-                <span class="material-symbols-outlined">history</span>
+            class="flex items-center gap-4 p-4 rounded-[24px] bg-white border border-gray-100 shadow-sm hover:border-[#14d0a1] transition-all active:scale-[0.98] group">
+            <div
+                class="w-12 h-12 rounded-[14px] bg-gray-50 text-[#001736] flex items-center justify-center group-hover:bg-[#14d0a1]/10 group-hover:text-[#14d0a1] transition-colors">
+                <span class="material-symbols-rounded">history</span>
             </div>
-            <div class="flex-1">
-                <h3 class="font-bold">ისტორია</h3>
-                <p class="text-xs text-gray-500">პარკირება და გადახდები</p>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-bold text-[#001736] text-[15px]">Bookings</h3>
+                <p class="text-[12px] text-gray-400 font-bold mt-0.5">Parking & Payments</p>
             </div>
-            <span class="material-symbols-outlined text-gray-300">chevron_right</span>
+            <span
+                class="material-symbols-rounded text-gray-300 group-hover:text-[#14d0a1] transition-colors">chevron_right</span>
         </a>
 
         <a href="fines.html"
-            class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
-            <div class="w-10 h-10 rounded-full bg-purple-500/10 text-purple-600 flex items-center justify-center">
-                <span class="material-symbols-outlined">confirmation_number</span>
+            class="flex items-center gap-4 p-4 rounded-[24px] bg-white border border-gray-100 shadow-sm hover:border-red-400 transition-all active:scale-[0.98] group">
+            <div
+                class="w-12 h-12 rounded-[14px] bg-red-50 text-red-500 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                <span class="material-symbols-rounded">confirmation_number</span>
             </div>
-            <div class="flex-1">
-                <h3 class="font-bold">ჯარიმები</h3>
-                <p class="text-xs text-danger font-bold">1 გადასახდელი</p>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-bold text-[#001736] text-[15px]">Fines</h3>
+                <p class="text-[12px] text-red-500 font-bold mt-0.5 uppercase tracking-widest">1 Unpaid</p>
             </div>
-            <span class="material-symbols-outlined text-gray-300">chevron_right</span>
+            <span
+                class="material-symbols-rounded text-gray-300 group-hover:text-red-400 transition-colors">chevron_right</span>
         </a>
 
-        <div class="mt-auto pt-8">
-            <button class="flex items-center gap-3 text-red-500 font-bold px-4 hover:opacity-80 transition-opacity">
-                <span class="material-symbols-outlined">logout</span>
-                <span>გასვლა</span>
-            </button>
+        <a href="promo-codes.html"
+            class="flex items-center gap-4 p-4 rounded-[24px] bg-white border border-gray-100 shadow-sm hover:border-[#14d0a1] transition-all active:scale-[0.98] group">
+            <div
+                class="w-12 h-12 rounded-[14px] bg-gray-50 text-[#001736] flex items-center justify-center group-hover:bg-[#14d0a1]/10 group-hover:text-[#14d0a1] transition-colors">
+                <span class="material-symbols-rounded">loyalty</span>
+            </div>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-bold text-[#001736] text-[15px]">Promo Codes</h3>
+                <p class="text-[12px] text-gray-400 font-bold mt-0.5">Discounts & Offers</p>
+            </div>
+            <span
+                class="material-symbols-rounded text-gray-300 group-hover:text-[#14d0a1] transition-colors">chevron_right</span>
+        </a>
+
+        <div class="mt-8 mb-4">
+            <a href="login.html"
+                class="flex items-center justify-center gap-2 text-red-500 bg-red-50 hover:bg-red-100 p-4 rounded-[20px] font-bold text-[15px] transition-colors shadow-sm active:scale-[0.98]">
+                <span class="material-symbols-rounded text-[20px]">logout</span>
+                <span>Log Out</span>
+            </a>
         </div>
 
     </main>
 
-    <footer class="p-6 text-center text-xs text-gray-400 flex flex-col items-center gap-2">
-        <img src="Image/Final.png" alt="AQUE Logo"
-            class="h-8 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-        <p>AQUE App v1.0.0</p>
-    </footer>
 </body>
 
 </html>
