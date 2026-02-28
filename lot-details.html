@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parking Details</title>
+    <title>AQUE - Parking Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
@@ -14,7 +14,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { primary: "#14d0a1", background: "#f0f3f5" },
+                    colors: { primary: "#14d0a1", background: "#e8f2f0" },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
@@ -32,135 +32,118 @@
     </style>
 </head>
 
-<body class="bg-surface text-gray-900 font-sans min-h-[100dvh] flex flex-col relative bg-white pb-28">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-32">
 
-    <!-- Hero Image / Header -->
-    <div class="relative w-full h-[280px]">
-        <!-- Image -->
-        <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&q=80&w=1200"
-            alt="Parking Lot" class="w-full h-full object-cover rounded-b-[32px] shadow-sm" />
-
-        <!-- Gradient Overlay -->
-        <div
-            class="absolute inset-0 bg-gradient-to-t from-[#001736]/80 via-transparent to-[#001736]/40 rounded-b-[32px]">
-        </div>
-
-        <!-- Navbar Overlay -->
-        <header class="absolute top-0 left-0 right-0 px-5 pt-12 pb-4 flex items-center justify-between z-20">
-            <button onclick="history.back()"
-                class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 hover:bg-white/30 transition-colors">
-                <span class="material-symbols-rounded text-2xl">arrow_back</span>
-            </button>
-            <button
-                class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 hover:bg-white/30 transition-colors">
-                <span class="material-symbols-rounded text-2xl fill-white">favorite</span>
-            </button>
-        </header>
-
-        <!-- Distance Tag -->
-        <div class="absolute bottom-5 right-5">
-            <span
-                class="bg-[#14d0a1] text-white px-3 py-1.5 rounded-xl text-[12px] font-extrabold shadow-[0_4px_12px_rgba(20,208,161,0.4)] flex items-center gap-1">
-                <span class="material-symbols-rounded text-[14px]">near_me</span> 0.3 km
-            </span>
-        </div>
-    </div>
+    <!-- Header -->
+    <header class="px-5 pt-10 pb-4 flex items-center justify-start z-20 sticky top-0 bg-transparent">
+        <button onclick="history.back()"
+            class="p-2.5 bg-white text-[#001736] hover:bg-gray-50 rounded-[14px] transition-colors shadow-sm flex items-center justify-center">
+            <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+        </button>
+        <h1 class="text-[19px] font-extrabold text-[#001736] tracking-tight ml-4">Details</h1>
+    </header>
 
     <!-- Main Content -->
-    <main class="flex-1 px-5 flex flex-col -mt-4 z-10">
+    <main class="flex-1 overflow-y-auto hide-scrollbar px-5 flex flex-col gap-5 mt-2">
+
+        <!-- Image Card -->
+        <div class="relative w-full h-[220px] rounded-[32px] overflow-hidden shadow-md">
+            <!-- Image -->
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&q=80&w=1200"
+                alt="Parking Lot" class="w-full h-full object-cover" />
+
+            <!-- Gradient Overlay for Bottom -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+            <!-- "Confirmed by sensor" Badge -->
+            <div
+                class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                <span class="material-symbols-rounded text-[16px] text-[#14d0a1]">verified</span>
+                <span class="text-[11px] font-extrabold text-[#14d0a1] uppercase tracking-wide">Confirmed by
+                    sensor</span>
+            </div>
+        </div>
 
         <!-- Info Card -->
-        <div class="bg-white rounded-[24px] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-gray-100">
-            <div class="flex justify-between items-start mb-2">
-                <h1 class="text-[22px] font-extrabold text-[#001736] leading-tight">Freedom Square<br />Parking</h1>
-                <div class="bg-[#e4fff6] px-3 py-2 rounded-xl flex items-center gap-1">
-                    <span class="text-[#14d0a1] font-bold text-[18px]">₾8</span><span
-                        class="text-[#14d0a1] font-bold text-[12px]">/hr</span>
+        <div class="bg-white p-6 rounded-[32px] shadow-sm border border-gray-100 flex flex-col">
+
+            <!-- Title & Price Row -->
+            <div class="flex justify-between items-start">
+                <div class="flex flex-col">
+                    <h1 class="text-[22px] font-extrabold text-[#001736] leading-tight">Chavchavadze Ave.<br />#34</h1>
+                    <span class="text-[13px] text-gray-500 font-bold mt-1 tracking-wide">Vake, Tbilisi</span>
+                </div>
+                <div class="flex flex-col items-end">
+                    <div class="flex items-baseline gap-1 text-[#14d0a1]">
+                        <span class="text-[26px] font-extrabold tracking-tight">3</span>
+                        <span class="text-[18px] font-extrabold">₾</span>
+                    </div>
+                    <span class="text-[11px] text-gray-400 font-bold tracking-widest uppercase">per hour</span>
                 </div>
             </div>
-            <div class="flex items-center gap-1.5 text-gray-500 mb-5">
-                <span class="material-symbols-rounded text-[16px]">location_on</span>
-                <p class="text-[14px] font-medium">Tbilisi, Freedom Square 1</p>
-            </div>
 
-            <div class="w-full h-px bg-gray-100 mb-5"></div>
+            <!-- Divider -->
+            <div class="w-full h-px bg-gray-50 my-6"></div>
 
-            <!-- Stats -->
-            <div class="grid grid-cols-2 gap-3 mb-1">
-                <div class="flex items-center border border-gray-100 rounded-2xl p-3 gap-3">
-                    <div class="w-10 h-10 bg-[#f4f5f8] rounded-full flex items-center justify-center text-gray-500">
-                        <span class="material-symbols-rounded text-[20px]">local_parking</span>
-                    </div>
-                    <div>
-                        <span class="block text-[12px] text-gray-400 font-medium">Total Spots</span>
-                        <span class="block text-[15px] font-bold text-[#001736]">120</span>
-                    </div>
-                </div>
-                <div class="flex items-center border border-[#14d0a1]/30 bg-[#14d0a1]/5 rounded-2xl p-3 gap-3">
-                    <div
-                        class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#14d0a1] shadow-sm">
-                        <span class="material-symbols-rounded text-[20px]">check_circle</span>
-                    </div>
-                    <div>
-                        <span class="block text-[12px] text-[#0fb387] font-medium">Available</span>
-                        <span class="block text-[15px] font-bold text-[#14d0a1]">35 spots</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- Stats Row (3 Columns) -->
+            <div class="grid grid-cols-3 gap-2 text-center">
 
-        <!-- Amenities -->
-        <div class="mt-6 mb-4">
-            <h2 class="text-[17px] font-bold text-[#001736] mb-4">Amenities</h2>
-            <div class="flex gap-2.5 overflow-x-auto hide-scrollbar pb-2">
+                <!-- Spots -->
+                <div class="flex flex-col items-center gap-1.5">
+                    <span class="material-symbols-rounded text-[26px] text-[#14d0a1]">local_parking</span>
+                    <span class="text-[16px] font-extrabold text-[#001736] mt-1">12</span>
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">spots</span>
+                </div>
 
-                <div
-                    class="bg-[#f0f3f5] rounded-2xl p-3 flex flex-col items-center justify-center min-w-[80px] shrink-0 border border-gray-100">
-                    <span class="material-symbols-rounded text-gray-700 text-[24px] mb-2">schedule</span>
-                    <span class="text-[12px] font-bold text-gray-800">24/7</span>
+                <!-- Hours -->
+                <div class="flex flex-col items-center gap-1.5 border-x border-gray-100 pb-1">
+                    <span class="material-symbols-rounded text-[26px] text-[#14d0a1]">schedule</span>
+                    <span class="text-[16px] font-extrabold text-[#001736] mt-1">24/7</span>
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">hours</span>
                 </div>
-                <div
-                    class="bg-[#f0f3f5] rounded-2xl p-3 flex flex-col items-center justify-center min-w-[80px] shrink-0 border border-gray-100">
-                    <span class="material-symbols-rounded text-gray-700 text-[24px] mb-2">videocam</span>
-                    <span class="text-[12px] font-bold text-gray-800">CCTV</span>
-                </div>
-                <div
-                    class="bg-[#f0f3f5] rounded-2xl p-3 flex flex-col items-center justify-center min-w-[80px] shrink-0 border border-gray-100">
-                    <span class="material-symbols-rounded text-gray-700 text-[24px] mb-2">roofing</span>
-                    <span class="text-[12px] font-bold text-gray-800">Covered</span>
-                </div>
-                <div
-                    class="bg-[#f0f3f5] rounded-2xl p-3 flex flex-col items-center justify-center min-w-[80px] shrink-0 border border-gray-100">
-                    <span class="material-symbols-rounded text-gray-700 text-[24px] mb-2">ev_station</span>
-                    <span class="text-[12px] font-bold text-gray-800">EV Charge</span>
+
+                <!-- Distance -->
+                <div class="flex flex-col items-center gap-1.5">
+                    <span class="material-symbols-rounded text-[26px] text-[#14d0a1]">location_on</span>
+                    <span class="text-[16px] font-extrabold text-[#001736] mt-1">1.2</span>
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-widest">km</span>
                 </div>
 
             </div>
-        </div>
 
-        <!-- Description -->
-        <div class="mt-2">
-            <h2 class="text-[17px] font-bold text-[#001736] mb-2">Description</h2>
-            <p class="text-[14px] text-gray-500 leading-relaxed font-medium">
-                Premium multi-level parking facility located exactly in the heart of Freedom Square. Features automatic
-                license plate recognition, extensive camera coverage, and guaranteed available spots.
-            </p>
+            <!-- Divider -->
+            <div class="w-full h-px bg-gray-50 my-6"></div>
+
+            <!-- Description -->
+            <div class="flex flex-col gap-2">
+                <h2 class="text-[14px] font-extrabold text-gray-400 tracking-wide uppercase">Description</h2>
+                <p class="text-[14px] text-[#6e7b8a] leading-relaxed font-medium pr-2">
+                    Secured parking lot with video monitoring. Entry and exit is automatic with a license plate
+                    recognition system.
+                </p>
+            </div>
+
         </div>
 
     </main>
 
-    <!-- Bottom Action Bar -->
+    <!-- Bottom Actions -->
     <div
-        class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-5 py-4 flex items-center gap-4 z-40 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
-        <div class="flex flex-col">
-            <span class="text-gray-400 text-[12px] font-bold uppercase tracking-wider">Total Est.</span>
-            <span class="text-[#001736] font-extrabold text-[22px]">₾16<span
-                    class="text-gray-400 text-[14px]">.00</span></span>
-        </div>
-        <button onclick="window.location.href='select-slot.html'"
-            class="flex-1 bg-gradient-to-r from-[#17e3ae] to-[#8affda] text-[#003822] py-4 rounded-2xl font-bold text-[16px] shadow-[0_8px_16px_rgba(20,208,161,0.3)] hover:opacity-90 transition-opacity active:scale-[0.98] flex justify-center items-center gap-1.5">
-            Select Slot <span class="material-symbols-rounded text-[20px]">arrow_forward</span>
+        class="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background via-background to-transparent pt-12 z-30 flex gap-3">
+
+        <!-- Navigation Button -->
+        <button onclick="window.location.href='navigation.html'"
+            class="flex-[0.8] bg-white border-2 border-[#14d0a1] text-[#14d0a1] hover:bg-[#f0f9f6] font-extrabold py-4 rounded-[20px] transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+            <span class="material-symbols-rounded text-[20px]">near_me</span>
+            Navigation
         </button>
+
+        <!-- Book Button -->
+        <a href="select-slot.html"
+            class="flex-1 bg-gradient-to-r from-[#17e3ae] to-[#8affda] text-[#003822] hover:opacity-90 font-extrabold py-4 rounded-[20px] shadow-[0_8px_16px_rgba(20,208,161,0.25)] transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+            Book <span class="material-symbols-rounded text-[22px]">arrow_forward</span>
+        </a>
+
     </div>
 
 </body>

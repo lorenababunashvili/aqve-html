@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notifications</title>
+    <title>AQUE - Notifications</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
@@ -20,117 +20,127 @@
             }
         }
     </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
 
-<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-20">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-32">
 
     <!-- Header -->
-    <header class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background">
+    <header
+        class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background/90 backdrop-blur-md">
         <div class="flex items-center gap-3">
-            <button onclick="history.back()" class="p-1 text-gray-800">
-                <span class="material-symbols-rounded text-2xl">arrow_back</span>
-            </button>
-            <h1 class="text-[22px] font-bold text-gray-900">Notifications</h1>
+            <a href="profile.html"
+                class="p-1 text-[#001736] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center">
+                <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+            </a>
+            <h1 class="text-[19px] font-extrabold text-[#001736] tracking-tight">Notifications</h1>
         </div>
-        <button class="text-[#14d0a1] px-1 py-2 text-[13px] font-bold flex items-center transition-colors">
-            Mark all read
+        <!-- Mark All Read Icon -->
+        <button
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 shadow-sm border border-gray-100 hover:text-[#14d0a1] transition-colors relative">
+            <span class="material-symbols-rounded text-[20px]">task_alt</span>
+            <div class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-white"></div>
         </button>
     </header>
 
-    <!-- Tabs Container -->
-    <div class="px-5 mb-5 mt-1">
-        <div class="flex gap-2">
-            <button
-                class="px-5 py-2.5 bg-[#001736] rounded-[14px] shadow-sm text-[13px] font-bold text-white transition-all whitespace-nowrap">
-                All
-            </button>
-            <button
-                class="px-5 py-2.5 bg-white border-2 border-transparent text-[13px] font-bold text-gray-500 hover:text-gray-800 rounded-[14px] shadow-sm transition-colors whitespace-nowrap">
-                Unread
-            </button>
-            <button
-                class="px-5 py-2.5 bg-white border-2 border-transparent text-[13px] font-bold text-gray-500 hover:text-gray-800 rounded-[14px] shadow-sm transition-colors whitespace-nowrap">
-                Promos
-            </button>
-        </div>
-    </div>
-
     <!-- Main Content -->
-    <main class="flex-1 px-5 flex flex-col gap-3">
+    <main class="flex-1 overflow-y-auto hide-scrollbar px-5 pt-2 flex flex-col gap-6">
 
-        <!-- Notification Card 1 (Warning/Timer) -->
-        <div
-            class="bg-[#fdf8f4] border border-[#fbd8c0] rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-[#faeedd] transition-colors relative shadow-sm">
-            <!-- Unread dot -->
-            <div class="absolute top-4 right-4 w-2 h-2 bg-orange-500 rounded-full"></div>
+        <!-- Today Section -->
+        <div class="flex flex-col gap-3">
+            <h2 class="text-[13px] font-bold text-gray-400 mb-1 ml-1 tracking-wide uppercase">Today</h2>
 
-            <div class="w-12 h-12 bg-orange-100 rounded-[14px] flex items-center justify-center shrink-0">
-                <span class="material-symbols-rounded text-orange-500 text-[24px]">timer</span>
-            </div>
-            <div class="flex-1 min-w-0 pr-4">
-                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Session Ending Soon
-                </h3>
-                <p class="text-[13px] text-gray-600 font-medium leading-relaxed">Your parking session at Freedom Square
-                    will expire in 15 minutes. Would you like to extend it?</p>
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Just now</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Notification Card 2 (Success/Booking) -->
-        <div
-            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm">
-            <div class="w-12 h-12 bg-[#e8faf3] rounded-[14px] flex items-center justify-center shrink-0">
-                <span class="material-symbols-rounded text-[#14d0a1] text-[24px]">task_alt</span>
-            </div>
-            <div class="flex-1 min-w-0 pr-4">
-                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Booking Confirmed!
-                </h3>
-                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Your reservation for Rustaveli Avenue
-                    Garage (Slot D-2) is confirmed for tomorrow at 09:00 AM.</p>
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">2 hours ago</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Notification Card 3 (Promo) -->
-        <div
-            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm opacity-70">
+            <!-- Notification 1 -->
             <div
-                class="w-12 h-12 bg-blue-50 rounded-[14px] flex items-center justify-center shrink-0 border border-blue-100">
-                <span class="material-symbols-rounded text-blue-500 text-[24px]">local_activity</span>
-            </div>
-            <div class="flex-1 min-w-0 pr-4">
-                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">Weekend Discount 💰
-                </h3>
-                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Get 20% off all parking slots this
-                    weekend using code: WKND20 at checkout.</p>
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Yesterday</span>
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-2 relative cursor-pointer hover:bg-gray-50 transition-colors">
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-[#e6f9f4] text-[#14d0a1] flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(20,208,161,0.15)] font-extrabold text-[18px]">
+                        P
+                    </div>
+                    <div class="flex flex-col gap-1 w-full mt-0.5">
+                        <div class="flex justify-between items-start w-full">
+                            <h3 class="font-extrabold text-[15px] text-[#001736] leading-tight">Parking Completed</h3>
+                            <div class="flex items-center gap-1.5 mt-0.5 shrink-0">
+                                <span class="text-[11px] text-gray-400 font-bold">12:30</span>
+                                <div class="w-2 h-2 rounded-full bg-red-500 shrink-0"></div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-gray-500 font-medium leading-normal pr-4">
+                            Your parking at Chavchavadze Ave. #34 completed successfully. Total: 3.50GEL
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Notification 2 -->
+            <div
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-2 relative cursor-pointer hover:bg-gray-50 transition-colors mt-2">
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-[#fff8e6] text-[#fcb045] flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(252,176,69,0.15)]">
+                        <span class="material-symbols-rounded text-[20px] font-extrabold">local_activity</span>
+                    </div>
+                    <div class="flex flex-col gap-1 w-full mt-0.5">
+                        <div class="flex justify-between items-start w-full">
+                            <h3 class="font-extrabold text-[15px] text-[#001736] leading-tight">New Promo Code!</h3>
+                            <div class="flex items-center gap-1.5 mt-0.5 shrink-0">
+                                <span class="text-[11px] text-gray-400 font-bold">10:00</span>
+                                <div class="w-2 h-2 rounded-full bg-red-500 shrink-0"></div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-gray-500 font-medium leading-normal">
+                            You received a 20% discount promo code: <span
+                                class="font-extrabold text-[#001736]">WELCOME20</span>. Valid for 3 days.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Notification Card 4 (Info) -->
-        <div
-            class="bg-white border border-gray-100 rounded-[20px] p-4 flex gap-4 cursor-pointer hover:bg-gray-50 transition-colors relative shadow-sm opacity-70">
+        <!-- Yesterday Section -->
+        <div class="flex flex-col gap-3 mt-2">
+            <h2 class="text-[13px] font-bold text-gray-400 mb-1 ml-1 tracking-wide uppercase">Yesterday</h2>
+
+            <!-- Notification 3 -->
             <div
-                class="w-12 h-12 bg-gray-100 rounded-[14px] flex items-center justify-center shrink-0 border border-gray-200">
-                <span class="material-symbols-rounded text-gray-500 text-[24px]">info</span>
-            </div>
-            <div class="flex-1 min-w-0 pr-4">
-                <h3 class="font-bold text-[15px] text-[#001736] tracking-tight leading-tight mb-1">System Update</h3>
-                <p class="text-[13px] text-gray-500 font-medium leading-relaxed">We've added 3 new parking lots in the
-                    Saburtalo area. Check them out on the map!</p>
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Oct 12, 2025</span>
+                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-2 relative cursor-pointer hover:bg-gray-50 transition-colors opacity-80">
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-[#edf2f7] text-[#4299e1] flex items-center justify-center shrink-0">
+                        <span class="material-symbols-rounded text-[20px]">security</span>
+                    </div>
+                    <div class="flex flex-col gap-1 w-full mt-0.5">
+                        <div class="flex justify-between items-start w-full">
+                            <h3 class="font-extrabold text-[15px] text-[#001736] leading-tight">Security Alert</h3>
+                            <div class="flex items-center gap-1.5 mt-0.5 shrink-0">
+                                <span class="text-[11px] text-gray-400 font-bold">18:45</span>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-gray-500 font-medium leading-normal">
+                            A new login was detected on your account from a new device.
+                        </p>
+                    </div>
                 </div>
             </div>
+
         </div>
 
     </main>
+
 </body>
 
 </html>

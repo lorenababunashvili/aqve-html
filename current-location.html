@@ -61,49 +61,12 @@
 
 <body class="font-sans bg-background text-[#001736] min-h-[100dvh]">
 
-    <!-- Realistic Splash Screen -->
-    <div id="splash-screen" class="splash-container">
-        <svg width="1000" height="500" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"
-            class="w-full max-w-6xl px-4">
-            <defs>
-                <filter id="asphalt" x="0%" y="0%" width="100%" height="100%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" />
-                    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.5 0" in="noise"
-                        result="coloredNoise" />
-                </filter>
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-            </defs>
-            <g transform="translate(700, 180)">
-                <rect x="-20" y="-20" width="260" height="180" fill="#333" rx="4" />
-                <rect x="-20" y="-20" width="260" height="180" fill="#333" filter="url(#asphalt)" opacity="0.4" />
-                <path d="M10,10 L10,130 L210,130 L210,10" fill="none" stroke="#e5e7eb" stroke-width="8"
-                    stroke-linecap="square" opacity="0.9" />
-                <text x="110" y="90" text-anchor="middle" fill="#f3f4f6" font-family="Arial Black, sans-serif"
-                    font-weight="900" font-size="60" opacity="0.6" transform="scale(1, 0.9)">P</text>
-            </g>
-            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-path" />
-            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-path road-texture"
-                filter="url(#asphalt)" />
-            <path d="M-150,250 C150,250 50,50 350,50 C650,50 550,300 810,300" class="road-trail" />
-            <g class="car-group">
-                <path d="M70,-15 L82,-10 L70,-5" fill="none" stroke="#fff" stroke-width="2" />
-                <path d="M70,15 L82,10 L70,5" fill="none" stroke="#fff" stroke-width="2" />
-                <circle cx="78" cy="0" r="2" fill="black" />
-                <circle cx="78" cy="0" r="1" fill="#14d0a1" />
-            </g>
-            <text x="500" y="450" text-anchor="middle" class="logo-text tracking-tighter">AQUE</text>
-        </svg>
-    </div>
-
     <div class="relative flex h-[100dvh] w-full flex-col overflow-hidden">
 
         <!-- Map Background (Zoomed Image simulating Map) -->
         <div class="absolute inset-0 z-0">
             <div class="h-full w-full bg-cover bg-center"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhUpmqkWwK4oj2zkFSL9OnTDov1_PBmdIfG_4qyXusxZloJhLbwIdR_8_zMDQ10Uc_9VznLg5TZUHod2IrWivVCr8aHkF7a3jw7_Vpwy0no8AKR7Yug37EtkNe9lU6pzULnlIMxndvr8DHeTROdN2vpQUCZaHk6tkGwD64ZCJGn1wAEz2m9g1RLHRfLrSA6Bq5X1-7OFoKw7qdvuDw4inFvJSdz5PRQpWwEmkexxWVdMWG_7gikihntgEuV9YX41PCNNuil9Kv5ME");'>
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhUpmqkWwK4oj2zkFSL9OnTDov1_PBmdIfG_4qyXusxZloJhLbwIdR_8_zMDQ10Uc_9VznLg5TZUHod2IrWivVCr8aHkF7a3jw7_Vpwy0no8AKR7Yug37EtkNe9lU6pzULnlIMxndvr8DHeTROdN2vpQUCZaHk6tkGwD64ZCJGn1wAEz2m9g1RLHRfLrSA6Bq5X1-7OFoKw7qdvuDw4inFvJSdz5PRQpWwEmkexxWVdMWG_7gikihntgEuV9YX41PCNNuil9Kv5ME"); filter: brightness(0.95);'>
 
                 <!-- Map Markers -->
                 <a href="lot-details.html" class="absolute top-[35%] left-[20%]">
@@ -117,12 +80,13 @@
                     </div>
                 </a>
 
-                <!-- Main Selected Marker -->
+                <!-- Main Selected Marker (Current Location Indicator) -->
                 <div class="absolute top-[52%] left-[52%] transform -translate-x-1/2 -translate-y-1/2 z-10">
                     <div class="relative flex items-center justify-center">
-                        <div class="absolute h-20 w-20 rounded-full bg-[#14d0a1]/30 animate-pulse"></div>
-                        <div class="tear-drop tear-drop-primary border-[3px] border-white z-10 w-[56px] h-[60px]">
-                            <span class="material-symbols-rounded text-[24px] text-white">local_Charging</span>
+                        <div class="absolute h-24 w-24 rounded-full bg-[#14d0a1]/20 animate-ping"></div>
+                        <div class="absolute h-16 w-16 rounded-full bg-[#14d0a1]/40 animate-pulse"></div>
+                        <div class="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center z-10">
+                            <div class="w-5 h-5 bg-[#14d0a1] rounded-full border-2 border-white"></div>
                         </div>
                     </div>
                 </div>
@@ -142,14 +106,23 @@
             <div
                 class="px-5 pt-14 pb-6 flex flex-col gap-4 pointer-events-auto bg-white shadow-sm rounded-b-[40px] mb-4 border-b border-gray-100">
 
+                <!-- Header with Back Button -->
+                <div class="flex items-center gap-3">
+                    <button onclick="window.location.href='home.html'"
+                        class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 active:scale-95 transition-all text-gray-900 border border-gray-100">
+                        <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+                    </button>
+                    <h1 class="text-[18px] font-bold text-[#001736]">Current Location</h1>
+                </div>
+
                 <!-- Search Bar -->
                 <div class="flex flex-col gap-3 pointer-events-auto w-full">
                     <div
                         class="w-full flex items-center bg-[#f8f9fb] rounded-[20px] h-[56px] px-5 gap-3 border-[1.5px] border-transparent focus-within:border-[#14d0a1] focus-within:bg-white transition-all">
                         <span class="material-symbols-rounded text-gray-400 text-[20px]">search</span>
                         <input
-                            class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] font-bold placeholder:text-gray-400 placeholder:font-normal"
-                            placeholder="Where are you going?" type="text" />
+                            class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] font-bold text-gray-900 placeholder:text-gray-900"
+                            placeholder="Where do you want to park?" type="text" />
                         <div class="h-6 w-[1.5px] bg-gray-200"></div>
                         <button
                             class="text-[#001736] hover:text-[#14d0a1] transition-colors flex items-center justify-center p-1">
@@ -202,9 +175,9 @@
                         <!-- Bike -->
                         <button class="flex-shrink-0 relative group outline-none">
                             <div
-                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-gray-300">
+                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-[#14d0a1]">
                                 <img src="https://img.icons8.com/fluency/94/motorcycle.png"
-                                    class="w-10 h-10 object-contain self-center drop-shadow-sm grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                                    class="w-10 h-10 object-contain self-center drop-shadow-sm transition-all"
                                     alt="Bike">
                                 <span class="text-gray-500 font-bold text-[13px] ml-1.5 mb-0.5">Moto</span>
                             </div>
@@ -213,9 +186,9 @@
                         <!-- Truck -->
                         <button class="flex-shrink-0 relative group outline-none">
                             <div
-                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-gray-300">
+                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-[#14d0a1]">
                                 <img src="https://img.icons8.com/fluency/94/truck.png"
-                                    class="w-10 h-10 object-contain self-center drop-shadow-sm grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                                    class="w-10 h-10 object-contain self-center drop-shadow-sm transition-all"
                                     alt="Truck">
                                 <span class="text-gray-500 font-bold text-[13px] ml-1.5 mb-0.5">Truck</span>
                             </div>
@@ -224,9 +197,9 @@
                         <!-- Bus -->
                         <button class="flex-shrink-0 relative group outline-none">
                             <div
-                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-gray-300">
+                                class="w-[88px] h-[88px] bg-white rounded-[24px] p-2 flex flex-col justify-between items-start shadow-sm border-[1.5px] border-gray-100 transition-transform active:scale-95 hover:border-[#14d0a1]">
                                 <img src="https://img.icons8.com/fluency/94/bus.png"
-                                    class="w-10 h-10 object-contain self-center drop-shadow-sm grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                                    class="w-10 h-10 object-contain self-center drop-shadow-sm transition-all"
                                     alt="Bus">
                                 <span class="text-gray-500 font-bold text-[13px] ml-1.5 mb-0.5">Bus</span>
                             </div>

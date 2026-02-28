@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extend Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#14d0a1",
+                        background: "#f4f7f8", /* Light blue-grayish background */
+                        textNavy: "#001e36",
+                        textGray: "#8a96a3"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .time-option {
+            transition: all 0.2s ease;
+        }
+
+        .time-option.selected {
+            background-color: #e4fff4;
+            border-color: #14d0a1;
+            color: #14d0a1;
+        }
+
+        .time-option.selected .textNavy {
+            color: #14d0a1;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative overflow-hidden pb-8">
+
+    <!-- Decorative Gradients -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#14d0a1]/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="px-6 pt-12 pb-6 flex items-center justify-between z-20 relative">
+        <button onclick="history.back()"
+            class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm border border-gray-100 text-[#001e36]">
+            <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+        </button>
+        <h1 class="text-[18px] font-extrabold text-[#001e36] tracking-tight flex-1 text-center pr-10">Extend Time</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col px-5 relative z-10 mt-2">
+
+        <!-- Parking Info -->
+        <h2 class="text-[20px] font-extrabold text-textNavy tracking-tight mb-1">Freedom Square Parking</h2>
+        <div class="flex gap-4 text-textGray mb-6">
+            <div class="flex items-center gap-1.5">
+                <span class="material-symbols-rounded text-[14px]">local_parking</span>
+                <span class="text-[13px] font-medium">Slot B-1</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <span class="material-symbols-rounded text-[14px]">schedule</span>
+                <span class="text-[13px] font-medium">Ends at 11:00 AM</span>
+            </div>
+        </div>
+
+        <!-- Time Selector Grid -->
+        <h3 class="text-[14px] font-bold text-textGray mb-3 uppercase tracking-wider">Add More Time</h3>
+
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <!-- 15 Mins -->
+            <div class="time-option bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1"
+                data-minutes="15" data-cost="0.50">
+                <span class="font-black text-[22px] text-textNavy leading-none">+15<span
+                        class="text-[12px] font-bold text-textGray ml-1">min</span></span>
+                <span class="text-[12px] font-medium text-textGray">₾0.50</span>
+            </div>
+            <!-- 30 Mins -->
+            <div class="time-option selected bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1"
+                data-minutes="30" data-cost="1.00">
+                <span class="font-black text-[22px] text-[#14d0a1] leading-none textNavy">+30<span
+                        class="text-[12px] font-bold opacity-80 ml-1">min</span></span>
+                <span class="text-[12px] font-medium text-[#14d0a1]">₾1.00</span>
+            </div>
+            <!-- 1 Hour -->
+            <div class="time-option bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1"
+                data-minutes="60" data-cost="2.00">
+                <span class="font-black text-[22px] text-textNavy leading-none">+1<span
+                        class="text-[12px] font-bold text-textGray ml-1">hr</span></span>
+                <span class="text-[12px] font-medium text-textGray">₾2.00</span>
+            </div>
+            <!-- 2 Hours -->
+            <div class="time-option bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1"
+                data-minutes="120" data-cost="4.00">
+                <span class="font-black text-[22px] text-textNavy leading-none">+2<span
+                        class="text-[12px] font-bold text-textGray ml-1">hrs</span></span>
+                <span class="text-[12px] font-medium text-textGray">₾4.00</span>
+            </div>
+            <!-- 3 Hours -->
+            <div class="time-option bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1"
+                data-minutes="180" data-cost="6.00">
+                <span class="font-black text-[22px] text-textNavy leading-none">+3<span
+                        class="text-[12px] font-bold text-textGray ml-1">hrs</span></span>
+                <span class="text-[12px] font-medium text-textGray">₾6.00</span>
+            </div>
+            <!-- Custom -->
+            <div
+                class="time-option bg-white rounded-2xl p-4 border border-gray-100 shadow-sm cursor-pointer flex flex-col items-center justify-center gap-1">
+                <span class="material-symbols-rounded text-textGray text-[24px]">tune</span>
+                <span class="text-[12px] font-bold text-textGray">Custom</span>
+            </div>
+        </div>
+
+        <!-- Summary Calculation Card -->
+        <div class="bg-white rounded-[20px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.02)] mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-textGray font-medium text-[13px]">New End Time</span>
+                <span class="text-textNavy font-bold text-[15px]" id="new-end-time">11:30 AM</span>
+            </div>
+            <div class="h-px w-full bg-gray-100 mb-4"></div>
+            <div class="flex items-center justify-between">
+                <span class="text-textNavy font-black text-[16px]">Additional Cost</span>
+                <span class="text-[#14d0a1] font-black text-[22px]" id="additional-cost">₾1.00</span>
+            </div>
+        </div>
+
+        <div class="flex-1"></div>
+
+        <!-- Action Button -->
+        <a href="active-session.html"
+            class="w-full bg-gradient-to-r from-[#14d0a1] to-[#2de0b6] text-white font-bold text-[16px] py-4 rounded-[16px] shadow-[0_8px_20px_rgba(20,208,161,0.25)] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+            <span class="material-symbols-rounded text-[20px]">check_circle</span>
+            Confirm Extension
+        </a>
+
+    </main>
+
+    <!-- Script to handle time selection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const options = document.querySelectorAll('.time-option[data-minutes]');
+            const newEndTimeEl = document.getElementById('new-end-time');
+            const additionalCostEl = document.getElementById('additional-cost');
+
+            // Base end time is 11:00 AM. 11:00 == 11 hours 0 minutes
+            const baseHours = 11;
+            const baseMinutes = 0;
+
+            options.forEach(option => {
+                option.addEventListener('click', function () {
+                    // Remove selected classes
+                    options.forEach(opt => {
+                        opt.classList.remove('selected');
+                        const textNavySpan = opt.querySelector('.textNavy');
+                        const costSpan = opt.querySelector('span:nth-child(2)');
+                        if (textNavySpan) textNavySpan.classList.replace('text-[#14d0a1]', 'text-textNavy');
+                        if (costSpan) costSpan.classList.replace('text-[#14d0a1]', 'text-textGray');
+
+                        // remove opacity-80 from unit
+                        const unitSpan = opt.querySelector('span > span');
+                        if (unitSpan) {
+                            unitSpan.classList.remove('opacity-80');
+                            unitSpan.classList.add('text-textGray');
+                        }
+                    });
+
+                    // Add selected class to clicked
+                    this.classList.add('selected');
+                    const textNavySpan = this.querySelector('.textNavy');
+                    const costSpan = this.querySelector('span:nth-child(2)');
+                    if (textNavySpan) textNavySpan.classList.replace('text-textNavy', 'text-[#14d0a1]');
+                    if (costSpan) costSpan.classList.replace('text-textGray', 'text-[#14d0a1]');
+
+                    const unitSpan = this.querySelector('span > span');
+                    if (unitSpan) {
+                        unitSpan.classList.remove('text-textGray');
+                        unitSpan.classList.add('opacity-80');
+                    }
+
+                    // Calculate values
+                    const minsToAdd = parseInt(this.getAttribute('data-minutes'));
+                    const cost = parseFloat(this.getAttribute('data-cost')).toFixed(2);
+
+                    // Time logic
+                    let newMins = baseMinutes + minsToAdd;
+                    let newHours = baseHours + Math.floor(newMins / 60);
+                    newMins = newMins % 60;
+
+                    let ampm = newHours >= 12 ? 'PM' : 'AM';
+                    let displayHours = newHours > 12 ? newHours - 12 : newHours;
+                    if (displayHours === 0) displayHours = 12; // Midnight or Noon
+
+                    let displayMins = newMins < 10 ? '0' + newMins : newMins;
+
+                    newEndTimeEl.textContent = `${displayHours}:${displayMins} ${ampm}`;
+                    additionalCostEl.textContent = `₾${cost}`;
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -137,7 +137,7 @@
                     <div class="flex items-center gap-4">
                         <div
                             class="w-12 h-12 rounded-[14px] bg-[#fff1f2] text-rose-500 flex items-center justify-center shrink-0">
-                            <span class="material-symbols-rounded text-[24px]">local_parking</span>
+                            <span class="material-symbols-rounded text-[24px]">local_Charging</span>
                         </div>
                         <div class="flex flex-col">
                             <h3 class="font-bold text-[14px] text-[#001736]">Parking - Freedom Sq.</h3>
@@ -169,7 +169,7 @@
                     <div class="flex items-center gap-4">
                         <div
                             class="w-12 h-12 rounded-[14px] bg-[#fff1f2] text-rose-500 flex items-center justify-center shrink-0">
-                            <span class="material-symbols-rounded text-[24px]">local_parking</span>
+                            <span class="material-symbols-rounded text-[24px]">local_Charging</span>
                         </div>
                         <div class="flex flex-col">
                             <h3 class="font-bold text-[14px] text-[#001736]">Parking - Rustaveli Ave</h3>
@@ -184,35 +184,44 @@
 
     </main>
 
-    <!-- Bottom Navigation -->
-    <nav
-        class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 flex justify-between items-center z-40 pb-safe pt-2 px-1">
-        <a href="home.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
-            <span class="material-symbols-rounded text-[28px]">home</span>
-            <span class="text-[10px] mt-1 font-medium">Home</span>
-        </a>
-        <a href="select-slot.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
-            <span class="material-symbols-rounded text-[28px]">local_activity</span>
-            <span class="text-[10px] mt-1 font-medium">Parking</span>
-        </a>
-        <a href="history.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
-            <span class="material-symbols-rounded text-[28px]">schedule</span>
-            <span class="text-[10px] mt-1 font-medium">Bookings</span>
-        </a>
-        <a href="vehicles.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
-            <span class="material-symbols-rounded text-[28px]">directions_car</span>
-            <span class="text-[10px] mt-1 font-medium">Vehicles</span>
-        </a>
-        <a href="profile.html" class="flex flex-col items-center flex-1 py-2 text-gray-400">
-            <span class="material-symbols-rounded text-[28px]">person</span>
-            <span class="text-[10px] mt-1 font-medium">Profile</span>
-        </a>
-    </nav>
+    <!-- Floating Bottom Navigation -->
+    <div
+        class="fixed bottom-6 left-2 right-2 z-[100] flex justify-center pointer-events-none w-full max-w-[calc(100%-16px)] mx-auto">
+        <nav
+            class="bg-[#f0f9f6]/95 backdrop-blur-2xl border border-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-[32px] px-3 py-4 flex items-center justify-between w-full pointer-events-auto h-[72px]">
+
+            <a href="home.html"
+                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                <span class="material-symbols-rounded text-[28px]">home</span>
+                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Home</span>
+            </a>
+
+            <a href="charging.html" class="flex flex-col items-center justify-center text-[#21d0a1] relative w-14">
+                <span class="material-symbols-rounded text-[28px]">ev_station</span>
+                <span class="text-[11px] mt-1 font-bold">Charging</span>
+            </a>
+
+            <a href="history.html"
+                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                <span class="material-symbols-rounded text-[28px]">schedule</span>
+                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Bookings</span>
+            </a>
+
+            <a href="vehicles.html"
+                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                <span class="material-symbols-rounded text-[28px]">directions_car</span>
+                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Vehicles</span>
+            </a>
+
+            <a href="profile.html"
+                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                <span class="material-symbols-rounded text-[28px]">person</span>
+                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Profile</span>
+            </a>
+
+        </nav>
+    </div>
     <style>
-        /* Override wallet button active styling to mimic others but fit in generic nav */
-        a[href="wallet.html"] {
-            /* Handled globally via different navigation patterns, keeping generic for now or user can inject */
-        }
     </style>
 </body>
 

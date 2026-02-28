@@ -32,104 +32,102 @@
     </style>
 </head>
 
-<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative">
+<body class="bg-background text-gray-900 font-sans min-h-[100dvh] flex flex-col relative pb-32">
 
     <!-- Header -->
     <header
         class="px-5 pt-10 pb-4 flex items-center justify-between z-20 sticky top-0 bg-background/90 backdrop-blur-md">
         <div class="flex items-center gap-3">
-            <button onclick="history.back()"
-                class="p-1 text-[#001736] hover:bg-gray-100 rounded-full transition-colors">
-                <span class="material-symbols-rounded text-2xl">arrow_back</span>
-            </button>
-            <h1 class="text-[22px] font-extrabold text-[#001736] tracking-tight">Help & Support</h1>
+            <a href="profile.html"
+                class="p-1 text-[#001736] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center">
+                <span class="material-symbols-rounded text-[20px]">arrow_back</span>
+            </a>
+            <h1 class="text-[19px] font-extrabold text-[#001736] tracking-tight">Help & Support</h1>
         </div>
-        <div class="w-10"></div>
+        <div class="w-8"></div>
     </header>
 
-    <!-- Scrollable Content -->
-    <main class="flex-1 overflow-y-auto hide-scrollbar pb-10 px-5 pt-2">
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto hide-scrollbar px-5 pt-2 flex flex-col gap-6">
 
-        <!-- Search FAQ -->
-        <div class="relative mb-8 focus-within:ring-2 focus-within:ring-[#14d0a1]/20 rounded-[20px] transition-shadow">
-            <input type="text" placeholder="How can we help you?"
-                class="w-full bg-white border border-gray-100 rounded-[20px] py-4 pl-12 pr-4 shadow-sm text-[#001736] placeholder:text-gray-400 font-bold text-[15px] outline-none">
-            <span class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+        <!-- Search Bar -->
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-gray-400">
+                <span class="material-symbols-rounded text-[20px]">search</span>
+            </div>
+            <input type="text" placeholder="How can we help?"
+                class="w-full bg-white border border-gray-100 rounded-[20px] pl-12 pr-4 py-4 text-[#001736] shadow-sm font-bold text-[14px] outline-none placeholder-gray-400 focus:ring-2 focus:ring-[#14d0a1]/20">
         </div>
 
-        <h2 class="text-[12px] font-bold text-gray-400 uppercase tracking-widest ml-1 mb-3">FAQ</h2>
+        <!-- FAQ Section -->
+        <div class="flex flex-col gap-3">
+            <h2 class="text-[12px] font-bold text-gray-500 mb-1 ml-1 tracking-wide uppercase">Frequently Asked Questions
+            </h2>
 
-        <div class="flex flex-col gap-3 mb-8">
-            <!-- FAQ Item 1 -->
-            <button
-                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
-                <span class="font-bold text-[#001736] text-[15px]">How to add a card?</span>
-                <div
-                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
-                    <span class="material-symbols-rounded text-[20px]">add</span>
-                </div>
-            </button>
+            <!-- FAQ Items -->
+            <div class="bg-white rounded-[24px] shadow-sm border border-gray-100 flex flex-col overflow-hidden">
 
-            <!-- FAQ Item 2 -->
-            <button
-                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
-                <span class="font-bold text-[#001736] text-[15px]">How to change my password?</span>
-                <div
-                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
-                    <span class="material-symbols-rounded text-[20px]">add</span>
-                </div>
-            </button>
+                <a href="#"
+                    class="p-4 flex items-center justify-between hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0 relative">
+                    <span class="font-extrabold text-[14px] text-[#001736]">How to add a card?</span>
+                    <span class="material-symbols-rounded text-gray-400 text-[20px]">add_circle</span>
+                </a>
 
-            <!-- FAQ Item 3 -->
-            <button
-                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex items-center justify-between group active:scale-[0.99] transition-transform text-left hover:border-[#14d0a1]">
-                <span class="font-bold text-[#001736] text-[15px]">Refund Policy</span>
-                <div
-                    class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#14d0a1] group-hover:text-white transition-colors text-gray-400">
-                    <span class="material-symbols-rounded text-[20px]">add</span>
-                </div>
-            </button>
+                <a href="#"
+                    class="p-4 flex items-center justify-between hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0 relative">
+                    <span class="font-extrabold text-[14px] text-[#001736]">How to change password?</span>
+                    <span class="material-symbols-rounded text-gray-400 text-[20px]">add_circle</span>
+                </a>
+
+                <a href="#"
+                    class="p-4 flex items-center justify-between hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0 relative">
+                    <span class="font-extrabold text-[14px] text-[#001736]">Refund Policy</span>
+                    <span class="material-symbols-rounded text-gray-400 text-[20px]">description</span>
+                </a>
+
+            </div>
         </div>
 
-        <h2 class="text-[12px] font-bold text-gray-400 uppercase tracking-widest ml-1 mb-3">Contact Us</h2>
+        <!-- Contact Us Section -->
+        <div class="flex flex-col gap-3 mt-2">
+            <h2 class="text-[12px] font-bold text-gray-500 mb-1 ml-1 tracking-wide uppercase">Contact Us</h2>
 
-        <div class="grid grid-cols-2 gap-3">
+            <!-- 2-Column Contact Options -->
+            <div class="grid grid-cols-2 gap-3">
 
-            <!-- Chat Support -->
-            <button
-                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:border-[#14d0a1] transition-colors group active:scale-[0.98]">
-                <div
-                    class="w-14 h-14 rounded-[16px] bg-[#e4fff6] text-[#14d0a1] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-rounded text-[28px]"
-                        style="font-variation-settings: 'FILL' 1;">chat</span>
-                </div>
-                <span class="font-bold text-[#001736] text-[15px]">Chat</span>
-            </button>
+                <!-- Chat -->
+                <a href="#"
+                    class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-[#e6f4fb] text-[#2ba1e3] rounded-full flex items-center justify-center mb-1">
+                        <span class="material-symbols-rounded text-[22px]">forum</span>
+                    </div>
+                    <span class="font-extrabold text-[#001736] text-[14px]">Chat</span>
+                </a>
 
-            <!-- Call Support -->
-            <button
-                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:border-green-400 transition-colors group active:scale-[0.98]">
-                <div
-                    class="w-14 h-14 rounded-[16px] bg-green-50 text-green-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-rounded text-[28px]"
-                        style="font-variation-settings: 'FILL' 1;">call</span>
-                </div>
-                <span class="font-bold text-[#001736] text-[15px]">Call</span>
-            </button>
+                <!-- Call -->
+                <a href="#"
+                    class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-[#eafce4] text-[#4ea826] rounded-full flex items-center justify-center mb-1">
+                        <span class="material-symbols-rounded text-[22px]">call</span>
+                    </div>
+                    <span class="font-extrabold text-[#001736] text-[14px]">Call</span>
+                </a>
 
-            <!-- Email Support -->
-            <button
-                class="bg-white p-5 rounded-[28px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-2 hover:border-orange-400 transition-colors group col-span-2 active:scale-[0.98]">
-                <div
-                    class="w-14 h-14 rounded-[16px] bg-amber-50 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform mt-2">
-                    <span class="material-symbols-rounded text-[28px]"
-                        style="font-variation-settings: 'FILL' 1;">mail</span>
+            </div>
+
+            <!-- Full Width Email -->
+            <a href="mailto:support@aque.ge"
+                class="bg-white p-6 rounded-[24px] shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors w-full mt-1">
+                <div class="w-12 h-12 bg-[#fff1e5] text-[#f89547] rounded-full flex items-center justify-center mb-1">
+                    <span class="material-symbols-rounded text-[22px]">mail</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <span class="font-bold text-[#001736] text-[15px]">Email</span>
-                    <span class="text-[12px] text-gray-400 font-medium">support@aque.ge</span>
+                    <span class="font-extrabold text-[#001736] text-[14px]">Email</span>
+                    <span class="text-gray-400 text-[12px] font-medium tracking-wide">support@aque.ge</span>
                 </div>
-            </button>
+            </a>
 
         </div>
 
