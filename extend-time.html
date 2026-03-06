@@ -150,10 +150,11 @@
         <div class="flex-1"></div>
 
         <!-- Action Button -->
-        <a href="active-session.html"
-            class="w-full bg-gradient-to-r from-[#14d0a1] to-[#2de0b6] text-white font-bold text-[16px] py-4 rounded-[16px] shadow-[0_8px_20px_rgba(20,208,161,0.25)] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-            <span class="material-symbols-rounded text-[20px]">check_circle</span>
-            Confirm Extension
+        <a href="select-payment.html"
+            class="w-full bg-gradient-to-r from-[#14d0a1] to-[#2de0b6] text-white font-bold text-[16px] py-4 rounded-[16px] shadow-[0_8px_20px_rgba(20,208,161,0.25)] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+            id="pay-button">
+            <span class="material-symbols-rounded text-[20px]">payments</span>
+            <span id="pay-button-text">Pay ₾1.00 Now</span>
         </a>
 
     </main>
@@ -217,6 +218,12 @@
 
                     newEndTimeEl.textContent = `${displayHours}:${displayMins} ${ampm}`;
                     additionalCostEl.textContent = `₾${cost}`;
+
+                    // Update pay button text
+                    const payButtonTextEl = document.getElementById('pay-button-text');
+                    if (payButtonTextEl) {
+                        payButtonTextEl.textContent = `Pay ₾${cost} Now`;
+                    }
                 });
             });
         });

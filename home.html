@@ -239,344 +239,468 @@
             </div>
         </div>
 
-        <!-- Bottom List Overlays (Pushing the list down so it sits just above the nav bar and doesn't cover map) -->
-        <div class="absolute bottom-2 left-4 right-4 z-30 flex flex-col pointer-events-none">
+        <!-- Bottom List Overlays (Pushing the list down so it sits exactly above the nav bar) -->
+        <div class="absolute bottom-6 left-0 right-0 z-30 flex flex-col pointer-events-none">
 
             <!-- List View Block -->
             <div id="list-view-list"
-                class="bg-white rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.1)] p-5 border border-gray-100 flex flex-col gap-4 w-full transition-opacity duration-300 opacity-100 pointer-events-auto max-h-[30vh] overflow-y-auto hide-scrollbar">
-                <div class="flex justify-between items-center mb-1 shrink-0">
-                    <h2 class="text-[17px] font-bold text-[#001736]">Recommended Parking</h2>
-                    <button class="text-[#14d0a1] text-[13px] font-bold">See All</button>
-                </div>
-                <div class="flex flex-col gap-3">
-
-                    <!-- Item 1 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-12 h-12 bg-[#c9f5e8] rounded-[14px] flex items-center justify-center text-[#0b8e6d] shrink-0">
-                            <span class="material-symbols-rounded">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Freedom Square P1
-                            </h3>
-                            <div class="flex items-center gap-1.5 mt-0.5">
-                                <span class="flex items-center text-[12px] font-bold text-orange-500">
-                                    <span class="material-symbols-rounded text-[14px] mr-px">star</span>4.9
-                                </span>
-                                <span class="text-[10px] text-gray-300">•</span>
-                                <span class="text-[11px] font-bold text-[#14d0a1] flex items-center gap-1">
-                                    <span class="material-symbols-rounded text-[14px]">bolt</span>High Availability
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-gray-400 font-medium mt-1">0.3 km away</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-extrabold tracking-wide">₾8.00<span
-                                    class="text-[12px] font-bold text-gray-500">/hr</span></span>
-                            <span
-                                class="text-[11px] text-gray-500 font-medium mt-0.5 tracking-tight px-2 py-0.5 bg-gray-100 rounded-full">5
-                                spots</span>
-                        </div>
+                class="bg-[#f4f7fb] pt-3 pb-2 rounded-t-[32px] w-full transition-opacity duration-300 opacity-100 pointer-events-none shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+                <div class="flex flex-col w-full pointer-events-auto">
+                    <div class="flex justify-between items-end mb-2 px-5 shrink-0">
+                        <h2 class="text-[19px] font-extrabold text-[#001736] tracking-tight">Recommended</h2>
+                        <button onclick="event.stopPropagation(); window.location.href='recommended.html'"
+                            class="text-[#14d0a1] text-[15px] font-bold relative z-50">See All</button>
                     </div>
 
-                    <!-- Item 2 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-12 h-12 bg-[#c9f5e8] rounded-[14px] flex items-center justify-center text-[#0b8e6d] shrink-0">
-                            <span class="material-symbols-rounded">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Rustaveli Garage
-                            </h3>
-                            <div class="flex items-center gap-1.5 mt-0.5">
-                                <span class="flex items-center text-[12px] font-bold text-orange-500">
-                                    <span class="material-symbols-rounded text-[14px] mr-px">star</span>4.8
-                                </span>
-                                <span class="text-[10px] text-gray-300">•</span>
-                                <span class="text-[11px] font-bold text-yellow-500 flex items-center gap-1">
-                                    <span class="material-symbols-rounded text-[14px]">schedule</span>Med. Availability
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-gray-400 font-medium mt-1">0.5 km away</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-extrabold tracking-wide">₾6.00<span
-                                    class="text-[12px] font-bold text-gray-500">/hr</span></span>
-                            <span
-                                class="text-[11px] text-gray-500 font-medium mt-0.5 tracking-tight px-2 py-0.5 bg-gray-100 rounded-full">12
-                                spots</span>
-                        </div>
-                    </div>
+                    <!-- Horizontal Scroll Container -->
+                    <div class="flex overflow-x-auto gap-4 hide-scrollbar snap-x snap-mandatory px-5 pb-0 pt-2">
 
-                    <!-- Item 3 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-12 h-12 bg-[#c9f5e8] rounded-[14px] flex items-center justify-center text-[#0b8e6d] shrink-0">
-                            <span class="material-symbols-rounded">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Liberty Square
-                                Parking</h3>
-                            <div class="flex items-center gap-1.5 mt-0.5">
-                                <span class="flex items-center text-[12px] font-bold text-orange-500">
-                                    <span class="material-symbols-rounded text-[14px] mr-px">star</span>4.9
-                                </span>
-                                <span class="text-[10px] text-gray-300">•</span>
-                                <span class="text-[11px] font-bold text-[#14d0a1] flex items-center gap-1">
-                                    <span class="material-symbols-rounded text-[14px]">bolt</span>High Availability
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-gray-400 font-medium mt-1">0.8 km away</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-extrabold tracking-wide">₾5.00<span
-                                    class="text-[12px] font-bold text-gray-500">/hr</span></span>
-                            <span
-                                class="text-[11px] text-gray-500 font-medium mt-0.5 tracking-tight px-2 py-0.5 bg-gray-100 rounded-full">3
-                                spots</span>
-                        </div>
-                    </div>
+                        <!-- Card 1 -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
 
-                    <!-- Item 4 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-12 h-12 bg-[#c9f5e8] rounded-[14px] flex items-center justify-center text-[#0b8e6d] shrink-0">
-                            <span class="material-symbols-rounded">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Galleria Tbilisi
-                            </h3>
-                            <div class="flex items-center gap-1.5 mt-0.5">
-                                <span class="flex items-center text-[12px] font-bold text-orange-500">
-                                    <span class="material-symbols-rounded text-[14px] mr-px">star</span>4.7
-                                </span>
-                                <span class="text-[10px] text-gray-300">•</span>
-                                <span class="text-[11px] font-bold text-red-500 flex items-center gap-1">
-                                    <span class="material-symbols-rounded text-[14px]">warning</span>Low Availability
-                                </span>
+                            <!-- Image Area -->
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
+
+                                <!-- Top Right Badge: Spots -->
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-[#14d0a1]"></div>
+                                    <span class="text-[#14d0a1] text-[12px] font-extrabold tracking-tight mt-[1px]">12
+                                        spots</span>
+                                </div>
+
+                                <!-- Bottom Left Badge: Distance -->
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#202020]/80 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">🚗</span>
+                                    <span class="text-white text-[12px] font-bold tracking-tight mt-[1px]">0.3 km</span>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-gray-400 font-medium mt-1">1.2 km away</p>
+
+                            <!-- Info Area -->
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        Freedom
+                                        Square P1</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£8.00</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.9</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-[#14d0a1] text-[14px] leading-none mb-[1px]">⚡</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">EV Charging</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-extrabold tracking-wide">₾10.00<span
-                                    class="text-[12px] font-bold text-gray-500">/hr</span></span>
-                            <span
-                                class="text-[11px] text-gray-500 font-medium mt-0.5 tracking-tight px-2 py-0.5 bg-gray-100 rounded-full">1
-                                spot</span>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
+
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1573348722425-c1e13b860b24?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
+
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div>
+                                    <span class="text-yellow-500 text-[12px] font-extrabold tracking-tight mt-[1px]">5
+                                        spots</span>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#202020]/80 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">🚗</span>
+                                    <span class="text-white text-[12px] font-bold tracking-tight mt-[1px]">0.8 km</span>
+                                </div>
+                            </div>
+
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        Rustaveli Garage</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£6.00</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.8</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-gray-400 text-[14px] leading-none mb-[1px]">🔒</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">Secure</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
+
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1548332159-f2038e8bd332?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
+
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-[#14d0a1]"></div>
+                                    <span class="text-[#14d0a1] text-[12px] font-extrabold tracking-tight mt-[1px]">2
+                                        spots</span>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#202020]/80 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">🚗</span>
+                                    <span class="text-white text-[12px] font-bold tracking-tight mt-[1px]">1.2 km</span>
+                                </div>
+                            </div>
+
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        Vake Park Hub</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£5.50</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.6</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-gray-400 text-[14px] leading-none mb-[1px]">🚗</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">Covered</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <!-- Nearby View Block -->
             <div id="list-nearby"
-                class="bg-white rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.1)] p-5 border border-gray-100 flex flex-col gap-4 w-full absolute bottom-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none max-h-[30vh] overflow-y-auto hide-scrollbar">
-                <div class="flex justify-between items-center mb-1 shrink-0">
-                    <h2 class="text-[17px] font-bold text-[#001736]">Nearest to you</h2>
-                    <button class="text-[#14d0a1] text-[13px] font-bold">See All</button>
-                </div>
-                <div class="flex flex-col gap-3">
-
-                    <!-- Item 1 (Active/Selected state styling equivalent) -->
-                    <div class="bg-[#f0fbf8] border-[1.5px] border-[#14d0a1] rounded-[20px] p-4 flex items-center gap-4 cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-10 h-10 rounded-full flex items-center justify-center text-[#14d0a1] shrink-0 bg-white shadow-sm border border-gray-100">
-                            <span class="material-symbols-rounded text-[20px]">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">New York Park</h3>
-                            <p class="text-[12px] text-gray-600 font-medium mt-0.5 truncate">New York no. 125</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-semibold text-[14px]">1.25 km</span>
-                            <span class="text-[#14d0a1] text-[11px] font-bold mt-0.5">₾4.00/hr</span>
-                        </div>
+                class="bg-[#f4f7fb] pt-3 pb-2 rounded-t-[32px] w-full absolute bottom-0 left-0 transition-opacity duration-300 opacity-0 pointer-events-none shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+                <div class="flex flex-col w-full pointer-events-auto">
+                    <div class="flex justify-between items-end mb-2 px-5 shrink-0">
+                        <h2 class="text-[19px] font-extrabold text-[#001736] tracking-tight">Nearest to you</h2>
+                        <button onclick="event.stopPropagation(); window.location.href='nearby.html'"
+                            class="text-[#14d0a1] text-[15px] font-bold relative z-50">See All</button>
                     </div>
 
-                    <!-- Item 2 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 shrink-0 bg-white shadow-sm border border-gray-100">
-                            <span class="material-symbols-rounded text-[20px]">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Central Plaza
-                                Parking</h3>
-                            <p class="text-[12px] text-gray-600 font-medium mt-0.5 truncate">Main Str. 44</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-semibold text-[14px]">1.80 km</span>
-                            <span class="text-[#14d0a1] text-[11px] font-bold mt-0.5">₾5.00/hr</span>
-                        </div>
-                    </div>
+                    <!-- Horizontal Scroll Container -->
+                    <div class="flex overflow-x-auto gap-4 hide-scrollbar snap-x snap-mandatory px-5 pb-0 pt-2">
 
-                    <!-- Item 3 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 shrink-0 bg-white shadow-sm border border-gray-100">
-                            <span class="material-symbols-rounded text-[20px]">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Westside Mall</h3>
-                            <p class="text-[12px] text-gray-600 font-medium mt-0.5 truncate">West Ave. 9</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-semibold text-[14px]">2.10 km</span>
-                            <span class="text-[#14d0a1] text-[11px] font-bold mt-0.5">₾3.50/hr</span>
-                        </div>
-                    </div>
+                        <!-- Card 1 -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-[1.5px] border-[#14d0a1] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
 
-                    <!-- Item 4 -->
-                    <div class="bg-[#fcfdff] border border-gray-100 rounded-[20px] p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                        onclick="window.location.href='lot-details.html'">
-                        <div
-                            class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 shrink-0 bg-white shadow-sm border border-gray-100">
-                            <span class="material-symbols-rounded text-[20px]">location_on</span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-bold text-[15px] text-[#001736] tracking-tight truncate">Airport P2</h3>
-                            <p class="text-[12px] text-gray-600 font-medium mt-0.5 truncate">Terminal 1</p>
-                        </div>
-                        <div class="flex flex-col items-end shrink-0">
-                            <span class="text-[#001736] font-semibold text-[14px]">5.40 km</span>
-                            <span class="text-[#14d0a1] text-[11px] font-bold mt-0.5">₾15.00/hr</span>
-                        </div>
-                    </div>
+                            <!-- Image Area -->
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1621503952763-71887e502c3d?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
 
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-[#14d0a1]"></div>
+                                    <span class="text-[#14d0a1] text-[12px] font-extrabold tracking-tight mt-[1px]">8
+                                        spots</span>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#14d0a1]/90 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">📍</span>
+                                    <span
+                                        class="text-white text-[12px] font-bold tracking-tight mt-[1px]">Current</span>
+                                </div>
+                            </div>
+
+                            <!-- Info Area -->
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        New
+                                        York Park</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£4.00</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.2</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-[#14d0a1] text-[14px] leading-none mb-[1px]">✨</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">Premium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Nearby) -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
+
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1601569302196-1cadd1aa6702?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
+
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div>
+                                    <span class="text-yellow-500 text-[12px] font-extrabold tracking-tight mt-[1px]">1
+                                        spot</span>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#202020]/80 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">🚗</span>
+                                    <span class="text-white text-[12px] font-bold tracking-tight mt-[1px]">0.2 km</span>
+                                </div>
+                            </div>
+
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        City Mall Center</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£7.00</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.5</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-gray-400 text-[14px] leading-none mb-[1px]">♿</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">Accessible</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 (Nearby) -->
+                        <div class="bg-white rounded-[24px] p-2.5 flex flex-col shrink-0 w-[85vw] max-w-[320px] snap-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] cursor-pointer transition-transform active:scale-[0.98]"
+                            onclick="window.location.href='lot-details.html'">
+
+                            <div class="relative w-full h-[120px] rounded-[16px] overflow-hidden mb-2 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1570183182602-5ee3aa6160fc?q=80&w=600&auto=format&fit=crop"
+                                    class="w-full h-full object-cover" alt="Parking Garage">
+
+                                <div
+                                    class="absolute top-2.5 right-2.5 bg-white shadow-sm rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-[#14d0a1]"></div>
+                                    <span class="text-[#14d0a1] text-[12px] font-extrabold tracking-tight mt-[1px]">6
+                                        spots</span>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-2.5 left-2.5 bg-[#202020]/80 backdrop-blur-md rounded-[10px] px-2.5 py-1.5 flex items-center gap-1.5">
+                                    <span class="text-white text-[13px] leading-none mb-[1px]">🚗</span>
+                                    <span class="text-white text-[12px] font-bold tracking-tight mt-[1px]">0.5 km</span>
+                                </div>
+                            </div>
+
+                            <div class="px-1 pb-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3
+                                        class="font-bold text-[17px] text-[#001736] tracking-tight truncate flex-1 pr-2">
+                                        Liberty Tower</h3>
+                                    <div class="flex items-baseline shrink-0">
+                                        <span
+                                            class="text-[#14d0a1] font-extrabold text-[18px] tracking-tight">£9.00</span>
+                                        <span
+                                            class="text-[#14d0a1]/80 text-[12px] font-semibold tracking-tight ml-0.5">/hr</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-orange-400 text-[14px] leading-none mb-[1px]">★</span>
+                                        <span class="text-[#001736] text-[13px] font-bold">4.9</span>
+                                    </div>
+                                    <span class="text-gray-300 text-[11px] mb-[1px]">•</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-[#14d0a1] text-[14px] leading-none mb-[1px]">⚡</span>
+                                        <span class="text-[#14d0a1] text-[13px] font-semibold">EV Charging</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
         </div>
-    </div>
+        <!-- Floating Bottom Navigation -->
+        <div
+            class="fixed bottom-6 left-2 right-2 z-[100] flex justify-center pointer-events-none w-full max-w-[calc(100%-16px)] mx-auto">
+            <nav
+                class="bg-[#f0f9f6]/95 backdrop-blur-2xl border border-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-[32px] px-3 py-4 flex items-center justify-between w-full pointer-events-auto h-[72px]">
 
-    <!-- Floating Bottom Navigation -->
-    <div
-        class="fixed bottom-6 left-2 right-2 z-[100] flex justify-center pointer-events-none w-full max-w-[calc(100%-16px)] mx-auto">
-        <nav
-            class="bg-[#f0f9f6]/95 backdrop-blur-2xl border border-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-[32px] px-3 py-4 flex items-center justify-between w-full pointer-events-auto h-[72px]">
+                <a href="home.html"
+                    class="flex flex-col items-center justify-center text-[#21d0a1] relative w-14 group">
+                    <span class="material-symbols-rounded text-[28px]">home</span>
+                    <span class="text-[11px] mt-1 font-bold">Home</span>
+                </a>
 
-            <a href="home.html" class="flex flex-col items-center justify-center text-[#21d0a1] relative w-14 group">
-                <span class="material-symbols-rounded text-[28px]">home</span>
-                <span class="text-[11px] mt-1 font-bold">Home</span>
-            </a>
+                <!-- Restored Charging section properly linking to charging page -->
+                <a href="charging.html"
+                    class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                    <span class="material-symbols-rounded text-[28px]">ev_station</span>
+                    <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Charging</span>
+                </a>
 
-            <!-- Restored Charging section properly linking to charging page -->
-            <a href="charging.html"
-                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
-                <span class="material-symbols-rounded text-[28px]">ev_station</span>
-                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Charging</span>
-            </a>
+                <a href="history.html"
+                    class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                    <span class="material-symbols-rounded text-[28px]">schedule</span>
+                    <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Bookings</span>
+                </a>
 
-            <a href="history.html"
-                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
-                <span class="material-symbols-rounded text-[28px]">schedule</span>
-                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Bookings</span>
-            </a>
+                <a href="vehicles.html"
+                    class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                    <span class="material-symbols-rounded text-[28px]">directions_car</span>
+                    <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Vehicles</span>
+                </a>
 
-            <a href="vehicles.html"
-                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
-                <span class="material-symbols-rounded text-[28px]">directions_car</span>
-                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Vehicles</span>
-            </a>
+                <a href="profile.html"
+                    class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
+                    <span class="material-symbols-rounded text-[28px]">person</span>
+                    <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Profile</span>
+                </a>
 
-            <a href="profile.html"
-                class="flex flex-col items-center justify-center text-[#6e7b8a] hover:text-[#21d0a1] transition-colors w-14 group">
-                <span class="material-symbols-rounded text-[28px]">person</span>
-                <span class="text-[11px] mt-1 font-medium group-hover:font-bold">Profile</span>
-            </a>
+            </nav>
+        </div>
 
-        </nav>
-    </div>
+        <script>
+            function setTab(tab) {
+                // Buttons
+                const btnViewList = document.getElementById('btn-view-list');
+                const btnNearby = document.getElementById('btn-nearby');
+                const iconNearby = document.getElementById('icon-nearby');
+                const textNearby = document.getElementById('text-nearby');
 
-    <script>
-        function setTab(tab) {
-            // Buttons
-            const btnViewList = document.getElementById('btn-view-list');
-            const btnNearby = document.getElementById('btn-nearby');
-            const iconNearby = document.getElementById('icon-nearby');
-            const textNearby = document.getElementById('text-nearby');
+                // Map Layers
+                const mapLayerList = document.getElementById('map-layer-view-list');
+                const mapLayerNearby = document.getElementById('map-layer-nearby');
 
-            // Map Layers
-            const mapLayerList = document.getElementById('map-layer-view-list');
-            const mapLayerNearby = document.getElementById('map-layer-nearby');
+                // Map Pins
+                const pinsList = document.getElementById('pins-view-list');
+                const pinsNearby = document.getElementById('pins-nearby');
 
-            // Map Pins
-            const pinsList = document.getElementById('pins-view-list');
-            const pinsNearby = document.getElementById('pins-nearby');
+                // Bottom Lists
+                const listList = document.getElementById('list-view-list');
+                const listNearby = document.getElementById('list-nearby');
 
-            // Bottom Lists
-            const listList = document.getElementById('list-view-list');
-            const listNearby = document.getElementById('list-nearby');
+                if (tab === 'viewList') {
+                    btnViewList.className = "bg-[#14d0a1] text-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(20,208,161,0.3)] font-bold text-[13px] transition-colors pointer-events-auto";
+                    btnNearby.className = "bg-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-1.5 border border-gray-100 transition-colors pointer-events-auto";
+                    iconNearby.className = "material-symbols-rounded text-[18px] text-gray-600";
+                    textNearby.className = "text-[#001736] text-[13px] font-bold";
 
-            if (tab === 'viewList') {
-                btnViewList.className = "bg-[#14d0a1] text-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(20,208,161,0.3)] font-bold text-[13px] transition-colors pointer-events-auto";
-                btnNearby.className = "bg-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-1.5 border border-gray-100 transition-colors pointer-events-auto";
-                iconNearby.className = "material-symbols-rounded text-[18px] text-gray-600";
-                textNearby.className = "text-[#001736] text-[13px] font-bold";
+                    mapLayerList.classList.remove('opacity-0');
+                    mapLayerList.classList.add('opacity-80');
+                    mapLayerNearby.classList.remove('opacity-100');
+                    mapLayerNearby.classList.add('opacity-0');
 
-                mapLayerList.classList.remove('opacity-0');
-                mapLayerList.classList.add('opacity-80');
-                mapLayerNearby.classList.remove('opacity-100');
-                mapLayerNearby.classList.add('opacity-0');
+                    pinsList.classList.remove('opacity-0', 'pointer-events-none');
+                    pinsList.classList.add('opacity-100');
+                    pinsNearby.classList.remove('opacity-100');
+                    pinsNearby.classList.add('opacity-0', 'pointer-events-none');
 
-                pinsList.classList.remove('opacity-0', 'pointer-events-none');
-                pinsList.classList.add('opacity-100');
-                pinsNearby.classList.remove('opacity-100');
-                pinsNearby.classList.add('opacity-0', 'pointer-events-none');
+                    listList.classList.remove('opacity-0', 'pointer-events-none');
+                    listList.classList.add('opacity-100');
+                    listNearby.classList.remove('opacity-100');
+                    listNearby.classList.add('opacity-0', 'pointer-events-none');
+                } else {
+                    btnNearby.className = "bg-[#14d0a1] text-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(20,208,161,0.3)] flex items-center gap-1.5 transition-colors pointer-events-auto";
+                    btnViewList.className = "bg-white text-[#001736] border border-gray-100 px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] font-bold text-[13px] transition-colors pointer-events-auto";
+                    iconNearby.className = "material-symbols-rounded text-[18px] text-white";
+                    textNearby.className = "text-white text-[13px] font-bold";
 
-                listList.classList.remove('opacity-0', 'pointer-events-none');
-                listList.classList.add('opacity-100');
-                listNearby.classList.remove('opacity-100');
-                listNearby.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                btnNearby.className = "bg-[#14d0a1] text-white px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(20,208,161,0.3)] flex items-center gap-1.5 transition-colors pointer-events-auto";
-                btnViewList.className = "bg-white text-[#001736] border border-gray-100 px-4 py-2 rounded-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] font-bold text-[13px] transition-colors pointer-events-auto";
-                iconNearby.className = "material-symbols-rounded text-[18px] text-white";
-                textNearby.className = "text-white text-[13px] font-bold";
+                    mapLayerNearby.classList.remove('opacity-0');
+                    mapLayerNearby.classList.add('opacity-100');
+                    mapLayerList.classList.remove('opacity-80');
+                    mapLayerList.classList.add('opacity-0');
 
-                mapLayerNearby.classList.remove('opacity-0');
-                mapLayerNearby.classList.add('opacity-100');
-                mapLayerList.classList.remove('opacity-80');
-                mapLayerList.classList.add('opacity-0');
+                    pinsNearby.classList.remove('opacity-0', 'pointer-events-none');
+                    pinsNearby.classList.add('opacity-100');
+                    pinsList.classList.remove('opacity-100');
+                    pinsList.classList.add('opacity-0', 'pointer-events-none');
 
-                pinsNearby.classList.remove('opacity-0', 'pointer-events-none');
-                pinsNearby.classList.add('opacity-100');
-                pinsList.classList.remove('opacity-100');
-                pinsList.classList.add('opacity-0', 'pointer-events-none');
-
-                listNearby.classList.remove('opacity-0', 'pointer-events-none');
-                listNearby.classList.add('opacity-100');
-                listList.classList.remove('opacity-100');
-                listList.classList.add('opacity-0', 'pointer-events-none');
+                    listNearby.classList.remove('opacity-0', 'pointer-events-none');
+                    listNearby.classList.add('opacity-100');
+                    listList.classList.remove('opacity-100');
+                    listList.classList.add('opacity-0', 'pointer-events-none');
+                }
             }
-        }
 
-        // Javascript mapping for the dropdown toggle
-        const searchInput = document.getElementById('search-input');
-        const searchDropdown = document.getElementById('search-dropdown');
+            // Javascript mapping for the dropdown toggle
+            const searchInput = document.getElementById('search-input');
+            const searchDropdown = document.getElementById('search-dropdown');
 
-        if (searchInput && searchDropdown) {
-            searchInput.addEventListener('focus', () => {
-                searchDropdown.classList.remove('opacity-0', 'invisible');
-                searchDropdown.classList.add('opacity-100', 'visible');
-            });
+            if (searchInput && searchDropdown) {
+                searchInput.addEventListener('focus', () => {
+                    searchDropdown.classList.remove('opacity-0', 'invisible');
+                    searchDropdown.classList.add('opacity-100', 'visible');
+                });
 
-            searchInput.addEventListener('blur', () => {
-                setTimeout(() => {
-                    searchDropdown.classList.add('opacity-0', 'invisible');
-                    searchDropdown.classList.remove('opacity-100', 'visible');
-                }, 200);
-            });
-        }
-    </script>
+                searchInput.addEventListener('blur', () => {
+                    setTimeout(() => {
+                        searchDropdown.classList.add('opacity-0', 'invisible');
+                        searchDropdown.classList.remove('opacity-100', 'visible');
+                    }, 200);
+                });
+            }
+        </script>
 </body>
 
 </html>

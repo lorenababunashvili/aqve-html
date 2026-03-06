@@ -56,75 +56,130 @@
 
         <!-- Add Vehicle Button -->
         <a href="add-vehicle.html"
-            class="w-full bg-[#f0f9f6] border border-dashed border-[#14d0a1] hover:bg-[#e6f5f0] transition-colors rounded-[24px] py-4 flex items-center justify-center gap-3 shadow-sm">
-            <div class="w-8 h-8 rounded-full bg-[#14d0a1]/20 text-[#14d0a1] flex items-center justify-center">
-                <span class="material-symbols-rounded text-[18px]">add</span>
-            </div>
-            <span class="text-[15px] font-extrabold text-[#14d0a1]">Add Vehicle</span>
+            class="w-full border border-dashed border-[#14d0a1]/60 hover:bg-[#14d0a1]/5 transition-colors rounded-[16px] py-3.5 flex items-center justify-center gap-2 shadow-sm">
+            <span class="material-symbols-rounded text-[18px] text-[#14d0a1]">add</span>
+            <span class="text-[14px] font-bold text-[#14d0a1]">Add Vehicle</span>
         </a>
 
         <!-- My Vehicles Section -->
-        <div class="flex flex-col gap-3">
-            <h2 class="text-[13px] font-bold text-gray-400 mb-1 ml-1 tracking-wide">Active</h2>
+        <div class="flex flex-col gap-4">
+            <h2 class="text-[12px] font-bold text-gray-500 mb-1 ml-1 tracking-[0.05em] uppercase">Active</h2>
 
             <!-- Vehicle 1 (Main) -->
             <div
-                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-5 relative group cursor-pointer hover:border-gray-200 transition-colors">
+                class="bg-gradient-to-br from-[#eaf6fd] to-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white flex flex-col relative group cursor-pointer hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all overflow-hidden min-h-[160px]">
 
-                <div class="flex justify-between items-start">
-                    <div class="flex items-center gap-4">
+                <!-- Details Container -->
+                <div class="p-5 flex flex-col justify-between h-full z-10 w-[65%] gap-6">
+                    <div class="flex items-start gap-3">
                         <div
-                            class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 shrink-0">
-                            <span class="material-symbols-rounded text-[22px]">directions_car</span>
+                            class="w-10 h-10 bg-black rounded-[12px] flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                            <!-- Placeholder Toyota Logo -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Toyota_logo_%282019%29.png"
+                                alt="Toyota Logo" class="w-6 h-6 object-contain filter invert">
                         </div>
                         <div class="flex flex-col">
                             <h3 class="font-extrabold text-[16px] text-[#001736] leading-tight">Toyota Prius</h3>
-                            <span class="text-[13px] text-gray-500 font-medium">Sedan</span>
+                            <span class="text-[12px] text-gray-500 font-medium mt-0.5">Sedan • Hybrid</span>
                         </div>
                     </div>
-                    <!-- Main Badge -->
-                    <div
-                        class="bg-[#e6f9f4] text-[#14d0a1] px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-wide mt-1">
-                        Main
+
+                    <div class="flex flex-col gap-1 border-t border-gray-100/50 pt-3 relative">
+                        <div class="absolute -top-[1px] left-0 w-[65%] border-t border-dashed border-gray-200">
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">License Plate</span>
+                        <span
+                            class="text-[15px] font-bold text-[#001736] tracking-[0.08em] mt-0.5 font-mono">BB-777-BB</span>
                     </div>
                 </div>
 
-                <div class="flex justify-between items-end border-t border-gray-50 pt-3 mt-1">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-[11px] font-bold text-gray-400 tracking-wide uppercase">License Plate</span>
-                        <span class="text-[14px] font-bold text-[#001736] tracking-widest mt-1">BB-777-BB</span>
+                <!-- Right Side Badge & Image -->
+                <div class="absolute top-0 right-0 h-full w-[45%] flex flex-col justify-between items-end">
+                    <div
+                        class="bg-[#def7ef] text-[#14d0a1] px-2 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wide mt-4 mr-4 z-20">
+                        MAIN
                     </div>
-                    <div class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer p-1">
-                        <span class="material-symbols-rounded text-[20px]">more_horiz</span>
+                    <!-- Car Image -->
+                    <div class="absolute bottom-0 right-0 h-[70%] w-[90%] flex items-end">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=400&auto=format&fit=crop"
+                            class="w-full h-full object-contain object-right-bottom transform translate-y-2 pr-2"
+                            alt="Red Sedan Car">
                     </div>
                 </div>
             </div>
 
             <!-- Vehicle 2 -->
             <div
-                class="bg-white p-5 rounded-[24px] shadow-sm border border-gray-100 flex flex-col gap-5 relative group cursor-pointer hover:border-gray-200 transition-colors mt-2">
+                class="bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col relative group cursor-pointer hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all overflow-hidden min-h-[160px]">
 
-                <div class="flex justify-between items-start">
-                    <div class="flex items-center gap-4">
+                <!-- Details Container -->
+                <div class="p-5 flex flex-col justify-between h-full z-10 w-[65%] gap-6">
+                    <div class="flex items-start gap-3">
                         <div
-                            class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 shrink-0">
-                            <span class="material-symbols-rounded text-[22px]">directions_car</span>
+                            class="w-10 h-10 bg-black rounded-[12px] flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                            <!-- Placeholder BMW Logo -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW Logo"
+                                class="w-6 h-6 object-contain">
                         </div>
                         <div class="flex flex-col">
                             <h3 class="font-extrabold text-[16px] text-[#001736] leading-tight">BMW X5</h3>
-                            <span class="text-[13px] text-gray-500 font-medium">Jeep</span>
+                            <span class="text-[12px] text-gray-500 font-medium mt-0.5">SUV • Diesel</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1 border-t border-gray-100/50 pt-3 relative">
+                        <div class="absolute -top-[1px] left-0 w-[65%] border-t border-dashed border-gray-200">
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">License Plate</span>
+                        <span
+                            class="text-[15px] font-bold text-[#001736] tracking-[0.08em] mt-0.5 font-mono">GG-123-WP</span>
+                    </div>
+                </div>
+
+                <!-- Right Side Image -->
+                <div class="absolute bottom-0 right-0 h-[70%] w-[50%] flex items-end pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=400&auto=format&fit=crop"
+                        class="absolute right-0 bottom-2 max-h-[80%] max-w-[110%] object-contain object-right-bottom transform translate-x-2"
+                        alt="BMW SUV">
+                </div>
+            </div>
+
+            <!-- Vehicle 3 (Tesla) -->
+            <div
+                class="bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col relative group cursor-pointer hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all overflow-hidden min-h-[160px]">
+
+                <!-- Details Container -->
+                <div class="p-5 flex flex-col justify-between h-full z-10 w-full gap-6">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-10 h-10 bg-gray-50 rounded-[12px] flex items-center justify-center shrink-0 border border-gray-100/50 text-gray-300 font-bold text-[18px]">
+                            T
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="font-extrabold text-[16px] text-gray-600 leading-tight">Tesla Model 3</h3>
+                            <span class="text-[12px] text-gray-400 font-medium mt-0.5">Electric • Performance</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-end border-t border-gray-100/50 pt-3 relative w-[60%]">
+                        <div class="absolute -top-[1px] left-0 w-full border-t border-dashed border-gray-200"></div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-[10px] font-bold text-gray-400 tracking-wider uppercase">License
+                                Plate</span>
+                            <span
+                                class="text-[15px] font-bold text-gray-500 tracking-[0.08em] mt-0.5 font-mono">EL-999-EV</span>
+                        </div>
+                        <div class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer p-1">
+                            <span class="material-symbols-rounded text-[20px]">more_horiz</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-between items-end border-t border-gray-50 pt-3 mt-1">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-[11px] font-bold text-gray-400 tracking-wide uppercase">License Plate</span>
-                        <span class="text-[14px] font-bold text-[#001736] tracking-widest mt-1">GG-123-WP</span>
-                    </div>
-                    <div class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer p-1">
-                        <span class="material-symbols-rounded text-[20px]">more_horiz</span>
-                    </div>
+                <!-- Right Side Image (Tesla Placeholder) -->
+                <div class="absolute bottom-0 right-0 h-[70%] w-[50%] flex items-end pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=400&auto=format&fit=crop"
+                        class="absolute right-0 bottom-2 max-h-[80%] max-w-[110%] object-contain object-right-bottom transform translate-x-2"
+                        alt="White Tesla Model 3">
                 </div>
             </div>
 
